@@ -10,10 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_083727) do
+ActiveRecord::Schema.define(version: 2020_03_09_115809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "status"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "total_price"
+    t.bigint "flat_id"
+    t.bigint "user_id"
+    t.bigint "swap_request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_id"], name: "index_bookings_on_flat_id"
+    t.index ["swap_request_id"], name: "index_bookings_on_swap_request_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "flats", force: :cascade do |t|
+    t.string "address"
+    t.boolean "swappable"
+    t.integer "price"
+    t.string "description"
+    t.string "title"
+    t.integer "number_of_bedrooms"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "number_of_guests"
+    t.integer "number_of_bathrooms"
+    t.integer "number_of_beds"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_flats_on_user_id"
+  end
+
+  create_table "swap_requests", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "status"
+    t.bigint "requester_flat_id"
+    t.bigint "requested_flat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["requested_flat_id"], name: "index_swap_requests_on_requested_flat_id"
+    t.index ["requester_flat_id"], name: "index_swap_requests_on_requester_flat_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +72,10 @@ ActiveRecord::Schema.define(version: 2020_03_09_083727) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "flats"
+  add_foreign_key "bookings", "swap_requests"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "flats", "users"
+  add_foreign_key "swap_requests", "flats", column: "requested_flat_id"
+  add_foreign_key "swap_requests", "flats", column: "requester_flat_id"
 end
