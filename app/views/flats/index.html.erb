@@ -1,0 +1,14 @@
+<h2>I'm Here</h2>
+
+<ul> 
+
+<% @flats.each do |flat| %>
+<li>
+<%= link_to flat.title, flat_path(flat) %>
+</li>
+<% end %>
+
+</ul>
+
+<%= link_to "List your flat", new_flat_path %>
+
