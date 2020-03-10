@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_115809) do
+ActiveRecord::Schema.define(version: 2020_03_10_024112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,28 @@ ActiveRecord::Schema.define(version: 2020_03_09_115809) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.integer "phone_number"
+    t.string "address"
+    t.string "description"
+    t.bigint "flat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_id"], name: "index_contacts_on_flat_id"
+  end
+
+  create_table "flat_perks", force: :cascade do |t|
+    t.bigint "perk_id"
+    t.bigint "flat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_id"], name: "index_flat_perks_on_flat_id"
+    t.index ["perk_id"], name: "index_flat_perks_on_perk_id"
+  end
+
   create_table "flats", force: :cascade do |t|
     t.string "address"
-    t.boolean "swappable"
+    t.boolean "swappable", default: false
     t.integer "price"
     t.string "description"
     t.string "title"
@@ -46,6 +65,24 @@ ActiveRecord::Schema.define(version: 2020_03_09_115809) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_flats_on_user_id"
+  end
+
+  create_table "perks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "description"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "flat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_id"], name: "index_recommendations_on_flat_id"
   end
 
   create_table "swap_requests", force: :cascade do |t|
@@ -75,7 +112,11 @@ ActiveRecord::Schema.define(version: 2020_03_09_115809) do
   add_foreign_key "bookings", "flats"
   add_foreign_key "bookings", "swap_requests"
   add_foreign_key "bookings", "users"
+  add_foreign_key "contacts", "flats"
+  add_foreign_key "flat_perks", "flats"
+  add_foreign_key "flat_perks", "perks"
   add_foreign_key "flats", "users"
+  add_foreign_key "recommendations", "flats"
   add_foreign_key "swap_requests", "flats", column: "requested_flat_id"
   add_foreign_key "swap_requests", "flats", column: "requester_flat_id"
 end

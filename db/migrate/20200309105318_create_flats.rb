@@ -2,7 +2,7 @@ class CreateFlats < ActiveRecord::Migration[5.2]
   def change
     create_table :flats do |t|
       t.string :address
-      t.boolean :swappable
+      t.boolean :swappable, default: false
       t.integer :price
       t.string :description
       t.string :title
