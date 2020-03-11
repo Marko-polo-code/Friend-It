@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :flats
   has_many :swap_requests, through: :flats
   has_many :bookings
+  has_one_attached :photos
   has_friendship
 
 
