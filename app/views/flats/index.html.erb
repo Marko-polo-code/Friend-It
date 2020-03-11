@@ -1,14 +1,21 @@
-<h2>I'm Here</h2>
 
-<ul> 
 
-<% @flats.each do |flat| %>
-<li>
-<%= link_to flat.title, flat_path(flat) %>
-</li>
-<% end %>
+<div class="index-container">
+  <div class="cards col-md-8 col-sm-12">
 
-</ul>
+    <h2>Flats</h2>
 
-<%= link_to "List your flat", new_flat_path %>
+    <ul> 
 
+    <% @flats.each do |flat| %>
+    <li>
+    <%= link_to flat.title, flat_path(flat) %>
+    </li>
+    <% end %>
+
+    </ul>
+
+    <%= link_to "List your flat", new_flat_path %>
+    
+  </div>
+</div>
