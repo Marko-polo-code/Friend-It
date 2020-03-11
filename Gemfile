@@ -15,7 +15,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-gem 'devise'
+gem 'has_friendship'
+
 
 
 group :development do

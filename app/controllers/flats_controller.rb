@@ -1,4 +1,6 @@
 class FlatsController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def index
     @flats = Flat.all
   end
@@ -25,6 +27,7 @@ class FlatsController < ApplicationController
   def update
     set_flat
     @flat.update(flat_params)
+    redirect_to flat_path(@flat)
   end
 
   def edit
@@ -35,6 +38,10 @@ class FlatsController < ApplicationController
     set_flat
     authorize @flat
     @flat.destroy
+  end
+
+  def info
+    @flat = Flat.find(params[:flat_id])
   end
 
   private

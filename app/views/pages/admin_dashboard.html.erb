@@ -1,0 +1,22 @@
+
+<div class="container">
+  <% @received_bookings.each do |booking|  %>
+    <p> <%= booking.flat.title %> </p>
+    <p> <%= booking.start_date %> </p>
+    <p> <%= booking.end_date %> </p>
+    <p>$<%= booking.flat.price %> </p>
+
+
+    <% booking.flat.recommendations.each do |recommendation| %>
+       <%= link_to "Edit Recommendation", edit_recommendation_path(recommendation) %>
+      <% end %>
+      <% booking.flat.contacts.each do |contact| %>
+       <%= link_to "Edit Contact", edit_contact_path(contact) %>
+
+      <% end %>
+  <% end %>
+
+</div>
+
+
+   

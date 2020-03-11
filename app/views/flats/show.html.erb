@@ -1,18 +1,23 @@
-<p><%= @flat.title %> </p>
-<p><%= @flat.price %> </p>
-<p><%= @flat.description %> </p>
-<p><%= @flat.swappable ? "This flat is swappable" : "This flat is not swappable" %> </p>
-<p>Number of guests: <%= @flat.number_of_guests %> </p>
-<p>Number of bathrooms: <%= @flat.number_of_bathrooms %> </p>
-<p>Number of bedrooms: <%= @flat.number_of_bedrooms %> </p>
-<p>Number of beds: <%= @flat.number_of_beds %> </p>
-<p>Owner:<%= @flat.user.email %> </p>
-<%= link_to "Back", flats_path %> </p>
-<%= link_to "Edit this flat", edit_flat_path(@flat) %>
+<div class="container">
+
+  <p><%= @flat.title %> </p>
+  <p><%= @flat.price %> </p>
+  <p><%= @flat.description %> </p>
+  <p><%= @flat.swappable ? "This flat is swappable" : "This flat is not swappable" %> </p>
+  <p>Number of bathrooms: <%= @flat.number_of_bathrooms %> </p>
+  <p>Number of bedrooms: <%= @flat.number_of_bedrooms %> </p>
+  <p>Number of beds: <%= @flat.number_of_beds %> </p>
+  <p>Owner:<%= @flat.user.email %> </p>
+  <%= link_to "Back", flats_path %> </p>
+  <%= link_to "Edit this flat", edit_flat_path(@flat) %>
 
 
-  <%= simple_form_for([@flat, @booking]) do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.submit %>
-  <% end %>
+    <%= simple_form_for([@flat, @booking]) do |f| %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :number_of_guests %>
+      <%= f.submit %>
+
+    <% end %>
+
+ </div>

@@ -1,0 +1,44 @@
+<div class="row">
+
+  <div class="col-md-8 col-sm-12">
+
+    <h3>My Bookings</h3>
+
+   <% @made_bookings.each do |booking| %>
+   <p> <%= booking.flat.title %> </p>
+   <p> <%= booking.start_date %> </p>
+   <p> <%= booking.end_date %> </p>
+   <p>$<%= booking.flat.price %> </p>
+
+   <%= link_to "Flat Info", flat_info_path(booking.flat) %>
+   <% end %>
+  </div>
+</div>
+
+
+<h3>Your friend requests:</h3>
+
+<ul>
+
+<% current_user.requested_friends.each do |user| %>
+
+<li>
+  <%= user.email %> wants to be your friend <%= link_to "Accept", accept_friends_path(user), method: :post  %>
+  <%= user.email %> <%= link_to "Decline", decline_friends_path(user), method: :post  %>
+  <%= user.email %> <%= link_to "Block", block_friends_path(user), method: :post  %>
+
+</li>
+<% end %>
+
+</ul>
+
+<p>Your Friends</p>
+
+<% current_user.friends.each do |user| %>
+  <%= user.email %>
+  <%= link_to "Remove", remove_friends_path(user), method: :post  %>
+<% end %>
+
+
+
+

@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :flats
+  has_many :swap_requests, through: :flats
+  has_many :bookings
+  has_friendship
+
+
 end
