@@ -3,7 +3,7 @@ class FlatsController < ApplicationController
 
   def index
     if params[:query].present?
-      @flats = Flat.search_by_user(params[:query])
+      @flats = Flat.search_by_address_and_owner(params[:query])
     else
       @flats = Flat.all
     end
