@@ -1,5 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "#", class: "navbar-brand" do %>
+
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
@@ -7,6 +8,10 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+    <form action="/">
+      <input type="text" name="query">
+      <input type="submit">
+    </form>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -17,11 +22,14 @@
         <li class="nav-item">
           <%= link_to "Dashboard",dashboard_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Home",flats_path, class: "nav-link" %>
+        </li>
         <li class="nav-item dropdown">
-          <%= current_user.email %>
+          <span id="user">Hello - <%= current_user.email %></span>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Add Friend", find_friends_path, class: "dropdown-item" %>
+            <%= link_to "Friends", find_friends_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
