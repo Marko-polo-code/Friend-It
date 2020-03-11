@@ -1,11 +1,18 @@
 
 <div class="container">
   <% @received_bookings.each do |booking|  %>
+  
+  <p><%booking.status%></p>
+
     <p> <%= booking.flat.title %> </p>
     <p> <%= booking.start_date %> </p>
     <p> <%= booking.end_date %> </p>
     <p>$<%= booking.flat.price %> </p>
 
+  <% unless booking.status == "accepted" || booking.status == "rejected" %>
+    <%= link_to 'accept', booking_accept_path(booking), method: :put %>
+    <%= link_to 'reject', booking_reject_path(booking), method: :put %>
+  <% end %>
 
     <% booking.flat.recommendations.each do |recommendation| %>
        <%= link_to "Edit Recommendation", edit_recommendation_path(recommendation) %>
@@ -19,4 +26,3 @@
 </div>
 
 
-   

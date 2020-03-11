@@ -12,4 +12,10 @@ class Flat < ApplicationRecord
   validates :number_of_bedrooms, presence: true
   validates :number_of_guests, presence: true
   validates :number_of_beds, presence: true
+
+  def unavailable_dates
+    bookings.pluck(:start_date, :end_date).map do |range|
+      { from: range[0], to: range[1] }
+    end
+  end
 end

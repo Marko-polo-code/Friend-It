@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def dashboard 
     @flats = current_user.flats
     @made_bookings = current_user.bookings
+    @received_bookings = Booking.all.select { |booking| booking.flat.user == current_user}
   end
 
   def admin_dashboard 
