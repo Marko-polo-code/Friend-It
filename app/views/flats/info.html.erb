@@ -1,0 +1,38 @@
+<div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<div>
+
+<% @flat.recommendations.each do |recommendation| %>
+
+ <p> <%= recommendation.name %> </p>
+ <p> <%= recommendation.description %></p>
+ <p><%= recommendation.address %></p>
+
+<% end %>
+
+</div>
+
+
+<div>
+
+<% @flat.contacts.each do |contact| %>
+
+ <p> <%= contact.phone_number %> </p>
+ <p> <%= contact.address %> </p>
+  <p><%= contact.description %></p>
+<% end %>
+
+</div>
