@@ -12,12 +12,14 @@
   <%= link_to "Edit this flat", edit_flat_path(@flat) %>
 
 
-    <%= simple_form_for([@flat, @booking]) do |f| %>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
-      <%= f.input :number_of_guests %>
-      <%= f.submit %>
-
+<div id='flat-booking-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
+    <% if current_user.id != @flat.user_id  %>
+       <%= simple_form_for([@flat, @booking]) do |f| %>
+           <%= f.input :start_date, as: :string, type: :text %>
+           <%= f.input :end_date, as: :string, type: :text %>
+           <%= f.input :number_of_guests %>
+           <%= f.submit "Book", class: "btn btn-primary" %>
+        <% end %>
     <% end %>
-
+   </div>
  </div>

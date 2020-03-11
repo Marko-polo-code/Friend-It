@@ -251,7 +251,7 @@ PERKS = ["Wifi", "Air conditioning", "Hair dryer", "TV", "Private Bathroom", "Po
 user = User.create(email:"test@at.com", password: "password")
 
 puts 'Creating 10 fake users...'
-10.times do
+5.times do
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
