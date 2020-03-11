@@ -2,7 +2,11 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @flats = Flat.all
+    if params[:query].present?
+      @flats = Flat.search_by_user(params[:query])
+    else
+      @flats = Flat.all
+    end
   end
 
   def show
@@ -20,7 +24,7 @@ class FlatsController < ApplicationController
     if @flat.save
       redirect_to new_flat_recommendation_path(@flat)
     else
-      render :new 
+      render :new
     end
   end
 

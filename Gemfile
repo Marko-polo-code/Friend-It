@@ -16,6 +16,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'has_friendship'
+gem 'pg_search', '~> 2.3.0'
+
 
 
 
