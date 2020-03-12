@@ -16,7 +16,7 @@
             <p>Number of bathrooms: <%= @flat.number_of_bathrooms %></p>
             <p>Number of bedrooms: <%= @flat.number_of_bedrooms %></p>
             <p>Number of beds: <%= @flat.number_of_beds %></p>
-            <p>Owner:<%= @flat.user.email %></p>
+            <p>Owner:<%= @flat.user.first_name %></p>
           
         </div>
 
@@ -37,6 +37,7 @@
                 <%= f.input :end_date, as: :string, type: :text %>
                 <%= f.input :number_of_guests %>
                 <%= f.submit "Book", class: "btn btn-primary" %>
+                <%= link_to "Swap It", new_flat_swap_request_path(@flat)%>
               <% end %>
           <% end %>
         </div>

@@ -1,0 +1,22 @@
+<div id='flat-swap_request-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
+      <%= simple_form_for([@flat, @swap_request]) do |f| %>
+          <%= f.association :requester_flat, collection: Flat.where(user: current_user) %>
+          <%= f.input :start_date, as: :string, type: :text %>
+          <%= f.input :end_date, as: :string, type: :text %>
+          <%= f.submit "Swap", class: "btn btn-primary" %>
+        <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
