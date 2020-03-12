@@ -1,26 +1,40 @@
 
 <h2>Flats</h2>
 
-
-
-    <% @flats.each do |flat| %>
-
-  
-
-   
+<div class="container">
+            <% @flats.each do |flat| %>
+  <div class="row">
+     <div class="col-md-8 col-sm-12">
+        <div class="d-flex border-bottom justify-content-between">
+          <div class="d-flex flex-column align-items-center">
 
 
             <%= link_to flat.title, flat_path(flat) %>
 
 
               <p> <%= flat.description %></p>
-          
               <p> <%= flat.address %></p>
               <p>$<%= flat.price %></p>
 
-
             <img src="https://kitt.lewagon.com/placeholder/users/marko-polo-code" class="card-trip-user avatar-bordered" />
-          
+
+        </div>
+      </div>
+    </div>
+      <div class="col-md-4">
+        <div id="map"
+        style="width: 100%;
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+    </div>
+  </div>
   <% end %>
-    <%= link_to "List your flat", new_flat_path %>
+</div>
+  
+
+  
+          
+
    
