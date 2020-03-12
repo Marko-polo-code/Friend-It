@@ -7,6 +7,8 @@ class FlatsController < ApplicationController
       {
         lat: flat.latitude,
         lng: flat.longitude
+        # image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
+
       }
     end
 
