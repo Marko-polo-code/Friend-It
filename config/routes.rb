@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
     resources :recommendations, only: [:new, :create]
     resources :contacts, only: [:new, :create, :show]
-    resources :swap_requests, only: [:show, :create]
+    resources :swap_requests, only: [:new, :show, :create]
 
     get "info", to: "flats#info", as: :info
   end
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post "/decline_friends/:id", to: "friends#decline_friends", as: :decline_friends
   post "/remove_friends/:id", to: "friends#remove_friends", as: :remove_friends
 
+  post "/swap_requests/:id/accept", to: "swap_requests#accept", as: :accept_swap_request
 
 end
 

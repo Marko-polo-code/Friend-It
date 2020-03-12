@@ -3,24 +3,31 @@
 
 <div class="container">
             <% @flats.each do |flat| %>
+
+
   <div class="row">
      <div class="col-md-8 col-sm-12">
-        <div class="d-flex border-bottom justify-content-between">
-          <div class="d-flex flex-column align-items-center">
 
 
-            <%= link_to flat.title, flat_path(flat) %>
+    <div class="card-trip">
 
+        <img src="https://source.unsplash.com/<%=rand(1400..1600) %>x900/?flat" />
+        <div class="card-trip-infos">
+          <%= link_to flat.title, flat_path(flat) %>
 
+          <div>
               <p> <%= flat.description %></p>
               <p> <%= flat.address %></p>
               <p>$<%= flat.price %></p>
+          </div>
 
             <img src="https://kitt.lewagon.com/placeholder/users/marko-polo-code" class="card-trip-user avatar-bordered" />
+
 
         </div>
       </div>
     </div>
+
       <div class="col-md-4">
         <div id="map"
         style="width: 100%;
