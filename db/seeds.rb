@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
+
 
 ADDRESSES = [
   "777 Brockton Avenue, Abington MA 2351",

@@ -4,9 +4,16 @@ class FlatsController < ApplicationController
   def index
     @flats = Flat.geocoded #returns flats with coordinates
     @markers = @flats.map do |flat|
+      if flat.user.photo.attached?
+        url = "https://res.cloudinary.com/dncij7vr6/image/upload/" + flat.user.photo.key + ".jpg"
+      else
+        url = "https://image.flaticon.com/icons/svg/147/147144.svg"
+      end
       {
         lat: flat.latitude,
-        lng: flat.longitude
+        lng: flat.longitude,
+        image_url: url
+
       }
     end
 
