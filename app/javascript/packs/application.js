@@ -5,3 +5,8 @@ import { initSwapFlatpickr } from '../plugins/init_swapflatpickr';
 
 initFlatpickr();
 initSwapFlatpickr();
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { initMapbox } from '../plugins/init_mapbox';
+
+initMapbox();
+initFlatpickr();
