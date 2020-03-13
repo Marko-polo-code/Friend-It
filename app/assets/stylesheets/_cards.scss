@@ -4,7 +4,7 @@
   grid-template-columns: repeat(3, 200px);
   grid-gap: 16px;
   perspective: 1000px;
- 
+
 }
 
   // Smallest device
@@ -49,25 +49,25 @@
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     position: relative;
   }
-  
+
   .card-trip > img {
     height: 200px;
     width: 100%;
     object-fit: cover;
   }
-  
+
   .card-trip h2 {
     font-size: 16px;
     font-weight: bold;
     margin: 0;
   }
-  
+
   .card-trip p {
     font-size: 12px;
     opacity: .7;
     margin: 0;
   }
-  
+
   .card-trip .card-trip-infos {
     padding: 16px;
     box-shadow: 0 2px 7px #dfdfdf;
@@ -81,7 +81,7 @@
     top: 170px;
     width: 40px;
   }
-  
+
   .fav-heart {
     position: absolute;
     right: 8px;
@@ -96,4 +96,10 @@
     top: 10px;
     right: 10px;
     color: #F5FFFA;
+}
+
+.friend-image {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
 }

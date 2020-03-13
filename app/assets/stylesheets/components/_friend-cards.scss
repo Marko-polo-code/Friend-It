@@ -22,7 +22,7 @@
 
 .friend-card-center {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: top;
   border-right: 1px solid gray;
 
@@ -35,3 +35,18 @@
   }
 }
 
+.friend-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: top;
+  border-right: 1px solid gray;
+
+  h3 {
+    font-size: 14px;
+  }
+
+  img {
+    width: 40%;
+    border-radius: 5%;
+  }
+}
