@@ -9,7 +9,9 @@
 require 'faker'
 require "open-uri"
 
-
+IMAGE_URLS = ["https://static.wixstatic.com/media/9081d9_6539a2bd74f040b09094466006e645dc~mv2_d_5944_3963_s_4_2.jpg/v1/fill/w_640,h_400,al_c,q_80,usm_0.66_1.00_0.01/9081d9_6539a2bd74f040b09094466006e645dc~mv2_d_5944_3963_s_4_2.webp",
+"https://www.edinburghnews.scotsman.com/webimg/b25lY21zOjU3OWZhYzNiLWY4MmItNGEzZS05NDMzLTUwNWNlN2U2ODhhOTo4NGU3ODhhMi1jODM1LTRmZGEtODgyZi01ZGNlYjlmYmI4NDU=.jpg?width=640",
+"https://i.guim.co.uk/img/media/2c8ba886ecd43f62976c990ab88df3adcd36e361/0_98_750_450/master/750.jpg?width=300&quality=85&auto=format&fit=max&s=14fd26cbf8ae5f16f5a95dd8060187f3","https://static.dezeen.com/uploads/2020/01/flat-house-uk-practice-architecture-hemp-margent-farm_dezeen_hero-1-852x479.jpg"]
 ADDRESSES = [
   "777 Brockton Avenue, Abington MA 2351",
   "30 Memorial Drive, Avon MA 2322",
@@ -274,13 +276,16 @@ end
     swappable: [true].sample,
     price: rand(10..10000),
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    title: Faker::Movie.quote,
+    title: Faker::Address.city + " place",
     number_of_bedrooms: rand(1..4),
     number_of_guests: rand(1..4),
     number_of_bathrooms: rand(1..4),
     number_of_beds: rand(1..4),
     user: [User.all.sample, User.first].sample
   )
+  file = URI.open(IMAGE_URLS.sample)
+  flat.photos.attach(io: file, filename: 'home.png', content_type: 'image/png')
+
   flat.save!
 
   3.times do
@@ -352,7 +357,7 @@ User.all.each do |user|
     new_friend.accept_request(user)
   end
 rescue
- p "something wrong"
+ p "something wrong but not too bad!"
 end
 end
 
