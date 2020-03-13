@@ -253,7 +253,7 @@ PERKS = ["Wifi", "Air conditioning", "Hair dryer", "TV", "Private Bathroom", "Po
 user = User.create(email:"test@at.com", password: "password")
 
 puts 'Creating 10 fake users...'
-5.times do
+100.times do
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -339,4 +339,31 @@ puts 'Finished!'
   booking.save!
 end
 puts 'Finished!'
+
+
+User.all.each do |user|
+  begin
+  5.times do
+    new_friend = user
+    while new_friend == user
+      new_friend = User.all.sample
+    end
+    user.friend_request(new_friend)
+    new_friend.accept_request(user)
+  end
+rescue
+ p "something wrong"
+end
+end
+
+
+
+
+
+
+
+
+
+
+
 
