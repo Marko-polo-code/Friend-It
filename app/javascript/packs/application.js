@@ -12,3 +12,4 @@ import { initMapbox } from '../plugins/init_mapbox';
 initMapbox();
 initFlatpickr();
 scrollToTop();
+
