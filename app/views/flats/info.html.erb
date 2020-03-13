@@ -1,19 +1,42 @@
 
 
-    <% @flat.recommendations.each do |recommendation| %>
 
-    <p> <%= recommendation.name %> </p>
-    <p> <%= recommendation.description %></p>
-    <p><%= recommendation.address %></p>
+    <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80">
+              <% @flat.recommendations.each do |recommendation| %>
+              <div class="card-content">
+              <p>Name:</p>
+              <p><%= recommendation.name %></p> 
+              <p> <%= recommendation.description %></pp>
+              <p>Address: <%= recommendation.address %></p>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <% end %>
 
-    <
 
-    <% @flat.contacts.each do |contact| %>
 
-    <p> <%= contact.phone_number %> </p>
-    <p> <%= contact.address %> </p>
-      <p><%= contact.description %></p>
-    <% end %>
+
+    <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+                <% @flat.contacts.each do |contact| %>
+              <div class="card-content">
+                <p> <%= contact.phone_number %> </p>
+                <p> <%= contact.address %> </p>
+                  <p><%= contact.description %></p>
+              </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 

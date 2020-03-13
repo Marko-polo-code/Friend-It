@@ -20,7 +20,7 @@
       aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0">Your Friends</a>
   </li>
 
-</ul>
+
 
     <div id="myTab2Content" class="tab-content">
 
@@ -38,19 +38,8 @@
            <%#= render 'request_list_page', friends: @users %>
 
       </div>
-
-
-
-
-
-
-
-
-          <li>
             <%#= user.first_name %> <!-- wants to be your friend --> <%#= link_to "Accept", accept_friends_path(user), method: :post  %>
             <%#= link_to "Decline", decline_friends_path(user), method: :post  %>
-
-
       <div id="contact2" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
         <% current_user.friends.each do |user| %>
           <%= user.email %>
