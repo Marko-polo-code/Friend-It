@@ -11,10 +11,17 @@ Rails.application.routes.draw do
     get "info", to: "flats#info", as: :info
   end
 
+
+  resources :swap_requests, only: [] do 
+    put :accept
+    put :reject
+  end
+
   resources :bookings, only: [:show] do 
     put :accept
     put :reject
   end
+
 
   resources :recommendations, only: [:edit, :delete, :update]
   resources :contacts, only: [:edit, :delete, :update]
