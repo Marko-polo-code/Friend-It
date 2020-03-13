@@ -1,7 +1,8 @@
-<form action="/find_friends">
-  <input type="text" name="query">
-  <input type="submit">
-</form>
+
+ <form action="/find_friends">
+      <input type="text" id="search-bar" name="query">
+      <input type="submit" class="btn btn-outline-info ml-2">
+  </form>
 
 
 
@@ -22,6 +23,31 @@
 </ul>
 
     <div id="myTab2Content" class="tab-content">
+
+      <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+
+            <% @users.each do |user| %>
+
+            <% unless user.blocked_friends.include? current_user %>
+
+              <h2><%= user.first_name %></h2>
+              <p><%= user.email %></p>
+
+
+            <% if current_user.pending_friends.include?(user) %>
+              "Friendship Requested"
+
+            <% elsif current_user.friends.include?(user) %>
+                "Accepted"
+
+            <% else %>
+
+            <%= link_to "Add", add_friends_path(user), method: :post %>
+            <% end %>
+
+        <% end %>
+            <%= link_to "Remove", remove_friends_path(user), method: :post %>
+      <% end %>
       <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
 
 
@@ -43,6 +69,10 @@
 
 
 
+          <li>
+            <%#= user.first_name %> <!-- wants to be your friend --> <%#= link_to "Accept", accept_friends_path(user), method: :post  %>
+            <%#= link_to "Decline", decline_friends_path(user), method: :post  %>
+
 
       <div id="contact2" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
         <% current_user.friends.each do |user| %>
@@ -52,3 +82,4 @@
         <% end %>
       </div>
     </div>
+
