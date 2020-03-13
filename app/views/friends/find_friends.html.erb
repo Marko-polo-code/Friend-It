@@ -24,30 +24,7 @@
 
     <div id="myTab2Content" class="tab-content">
 
-      <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
 
-            <% @users.each do |user| %>
-
-            <% unless user.blocked_friends.include? current_user %>
-
-              <h2><%= user.first_name %></h2>
-              <p><%= user.email %></p>
-
-
-            <% if current_user.pending_friends.include?(user) %>
-              "Friendship Requested"
-
-            <% elsif current_user.friends.include?(user) %>
-                "Accepted"
-
-            <% else %>
-
-            <%= link_to "Add", add_friends_path(user), method: :post %>
-            <% end %>
-
-        <% end %>
-            <%= link_to "Remove", remove_friends_path(user), method: :post %>
-      <% end %>
       <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
 
 
