@@ -19,44 +19,22 @@
     <a id="contact2-tab" data-toggle="tab" href="#contact2" role="tab" aria-controls="contact2"
       aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0">Your Friends</a>
   </li>
-
 </ul>
 
     <div id="myTab2Content" class="tab-content">
 
 
       <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-
-
-
-
         <%= render 'friend_list_page', friends: @users %>
-
-      </div>
-
-      <div id="profile2" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
-           <%#= render 'request_list_page', friends: @users %>
-
-      </div>
-
-
-
-
-
-
-
-
-          <li>
+        </div>
             <%#= user.first_name %> <!-- wants to be your friend --> <%#= link_to "Accept", accept_friends_path(user), method: :post  %>
             <%#= link_to "Decline", decline_friends_path(user), method: :post  %>
-
-
-      <div id="contact2" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
-        <% current_user.friends.each do |user| %>
-          <%= user.email %>
-          <%= link_to "Block", block_friends_path(user), method: :post  %>
-          <%= link_to "Remove", remove_friends_path(user), method: :post  %>
-        <% end %>
+        <div id="contact2" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
+            <% current_user.friends.each do |user| %>
+              <%= user.email %>
+              <%= link_to "Block", block_friends_path(user), method: :post  %>
+              <%= link_to "Remove", remove_friends_path(user), method: :post  %>
+            <% end %>
+        </div>
       </div>
-    </div>
 
