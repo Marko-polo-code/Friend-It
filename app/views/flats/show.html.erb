@@ -26,8 +26,14 @@
 
 
       </div>
-    <%= link_to "Back", flats_path %></p>
-    <%= link_to "Edit this flat", edit_flat_path(@flat) %>
+
+    <%= link_to "Back", flats_path, class: "btn btn-primary" %></p>
+
+    <% if @flat.user == current_user %>
+
+       <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-primary" %>
+    <% end %>
+
     </div>
     <div class="col-4">
       <div id='flat-booking-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
@@ -37,7 +43,7 @@
                 <%= f.input :end_date, as: :string, type: :text %>
                 <%= f.input :number_of_guests %>
                 <%= f.submit "Book", class: "btn btn-primary" %>
-                <%= link_to "Swap It", new_flat_swap_request_path(@flat)%>
+                <%= link_to "Swap It", new_flat_swap_request_path(@flat), class: "btn btn-primary"%>
               <% end %>
           <% end %>
         </div>
