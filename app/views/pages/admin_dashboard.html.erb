@@ -45,15 +45,15 @@
 
 
             <% unless booking.status == "accepted" || booking.status == "rejected" %>
-              <%= link_to 'accept', booking_accept_path(booking), method: :put %>
-              <%= link_to 'reject', booking_reject_path(booking), method: :put %>
+              <%= link_to 'accept', booking_accept_path(booking), class: "btn btn-primary", method: :put %>
+              <%= link_to 'reject', booking_reject_path(booking), class: "btn btn-primary", method: :put %>
             <% end %>
 
               <% booking.flat.recommendations.each do |recommendation| %>
                 <%= link_to "Edit Recommendation", edit_recommendation_path(recommendation) %>
                 <% end %>
                 <% booking.flat.contacts.each do |contact| %>
-                <%= link_to "Edit Contact", edit_contact_path(contact) %>
+                <%= link_to "Edit Contact", edit_contact_path(contact), class: "btn btn-primary" %>
                 <% end %>
                 </div>
               </div>
@@ -76,8 +76,8 @@
                     <h2><%= request.requester_flat.user.first_name  %> wants to trade <%= link_to request.requester_flat.title, flat_path(request.requester_flat) %></h2>
                     <% unless request.status == "accepted" || request.status == "rejected" %>
                     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-                    <p><%= link_to 'Accept', swap_request_accept_path(request), method: :put %></p>
-                    <p><%= link_to 'Reject', swap_request_reject_path(request), method: :put %></p>
+                    <p><%= link_to 'Accept', swap_request_accept_path(request), class: "btn btn-primary", method: :put %></p>
+                    <p><%= link_to 'Reject', swap_request_reject_path(request), class: "btn btn-primary", method: :put %></p>
                   <% end %>
                   </div>
                 </div>
