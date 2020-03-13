@@ -18,4 +18,10 @@ class User < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+  def common_friends(other_user)
+    current_user_friends_id = self.friends.pluck(:id)
+    other_user_friends_id = other_user.friends.pluck(:id)
+    current_user_friends_id.select! { |id| other_user_friends_id.include?(id)}
+    User.where(id: current_user_friends_id)
+  end
 end
