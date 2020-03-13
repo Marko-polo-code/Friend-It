@@ -1,43 +1,33 @@
 
-<h2>Flats</h2>
 
-<div class="container">
-            <% @flats.each do |flat| %>
-
-
+<div class="container-fluid px-5">
   <div class="row">
-     <div class="col-md-8 col-sm-12">
+    <div class="col-md-8">
+       <% @flats.each do |flat| %>
+          <div class="flat-card row">
+            <div class="card-img-box col-sm-5">
+            <img src="https://source.unsplash.com/<%=rand(1400..1600) %>x900/?luxury-apartment" alt="" class="card-img-top">
 
-
-    <div class="card-trip">
-
-        <img src="https://source.unsplash.com/<%=rand(1400..1600) %>x900/?flat" />
-        <div class="card-trip-infos">
-          <%= link_to flat.title, flat_path(flat) %>
-
-          <div>
-              <p> <%= flat.description %></p>
+            </div>
+            <div class="col-sm-7 card-text-box">
+              <h1><%= link_to flat.title, flat_path(flat) %></h1>
+              <p> <%= flat.description.truncate(150) %></p>
               <p> <%= flat.address %></p>
               <p>$<%= flat.price %></p>
+
+            </div>
           </div>
-
-            <img src="https://kitt.lewagon.com/placeholder/users/marko-polo-code" class="card-trip-user avatar-bordered" />
-
-
-        </div>
-      </div>
+       <% end %>
     </div>
-
-      <div class="col-md-4">
+    <div class="col-md-4">
         <div id="map"
-        style="width: 100%;
-        height: 600px;"
+        style="width: 100%; height: 100vh"        
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
+
     </div>
   </div>
-  <% end %>
 </div>
 
 
