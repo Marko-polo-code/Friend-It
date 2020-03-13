@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
     if @contact.save
       redirect_to flat_path(@flat)
     else
-      render :new 
+      render :new
     end
   end
 
