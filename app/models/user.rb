@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_friendship
 
-
   include PgSearch::Model
   pg_search_scope :search_by_user,
     against: [ :email, :first_name, :last_name ],

@@ -25,12 +25,12 @@
     <div id="myTab2Content" class="tab-content">
 
       <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-      
+
             <% @users.each do |user| %>
 
             <% unless user.blocked_friends.include? current_user %>
-              
-              <h2><%= user.first_name %></h2> 
+
+              <h2><%= user.first_name %></h2>
               <p><%= user.email %></p>
 
 
@@ -44,7 +44,7 @@
 
             <%= link_to "Add", add_friends_path(user), method: :post %>
             <% end %>
-        
+
         <% end %>
             <%= link_to "Remove", remove_friends_path(user), method: :post %>
       <% end %>
@@ -58,19 +58,22 @@
       </div>
 
       <div id="profile2" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
-        <ul>
+           <%#= render 'request_list_page', friends: @users %>
 
-          <% current_user.requested_friends.each do |user| %>
+      </div>
+
+
+
+
+
+
+
 
           <li>
-            <%= user.first_name %> wants to be your friend <%= link_to "Accept", accept_friends_path(user), method: :post  %>
-            <%= link_to "Decline", decline_friends_path(user), method: :post  %>
+            <%#= user.first_name %> <!-- wants to be your friend --> <%#= link_to "Accept", accept_friends_path(user), method: :post  %>
+            <%#= link_to "Decline", decline_friends_path(user), method: :post  %>
 
-          </li>
-          <% end %>
 
-          </ul>
-      </div>
       <div id="contact2" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
         <% current_user.friends.each do |user| %>
           <%= user.email %>
@@ -79,4 +82,4 @@
         <% end %>
       </div>
     </div>
-  
+

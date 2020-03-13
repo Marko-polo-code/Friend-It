@@ -5,6 +5,19 @@ class FriendsController < ApplicationController
     else
       @users = User.where.not(id: current_user.id)
     end
+        @markers = Flat.joins(:user).where(user_id: @users.pluck(:id)).map do |flat|
+      if flat.user.photo.attached?
+        url = "https://res.cloudinary.com/dncij7vr6/image/upload/" + flat.user.photo.key + ".jpg"
+      else
+        url = "https://image.flaticon.com/icons/svg/147/147144.svg"
+      end
+      {
+        lat: flat.latitude,
+        lng: flat.longitude,
+        image_url: url
+
+      }
+    end
   end
 
   def add_friends
