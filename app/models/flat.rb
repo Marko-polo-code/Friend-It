@@ -6,6 +6,7 @@ class Flat < ApplicationRecord
   has_many :flat_perks
   has_many :perks, through: :flat_perks
   has_many :recommendations
+  has_many_attached :photos
   validates :title, presence: true
   validates :address, presence: true
   validates :price, presence: true

@@ -14,9 +14,11 @@
               <%= f.input :number_of_bedrooms %>
               <%= f.input :number_of_bathrooms %>
               <%= f.input :number_of_beds %>
+              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
               <%= f.submit %>
             <% end %>
+
           </div>
         </div>
       </div>
@@ -30,7 +32,7 @@
       </div>
     </div>
   </div>
-  
+
 
 
 

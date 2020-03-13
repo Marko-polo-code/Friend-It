@@ -47,9 +47,15 @@
         <% end %>
             <%= link_to "Remove", remove_friends_path(user), method: :post %>
       <% end %>
+      <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+
+
+
+
+        <%= render 'friend_list_page', friends: @users %>
 
       </div>
-      
+
       <div id="profile2" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
         <ul>
 

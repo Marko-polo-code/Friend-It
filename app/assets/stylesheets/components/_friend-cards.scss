@@ -1,0 +1,37 @@
+.friend-card-wrapper {
+
+    padding: 18px 5px;
+    border-bottom: 1px solid #cbcbcb;
+    margin-bottom: 24px;
+}
+
+.friend-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+      border-right: 1px solid gray;
+
+  img {
+    width: 45%
+  }
+  h3 {
+    font-size: 14px;
+  }
+}
+
+
+.friend-card-center {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  border-right: 1px solid gray;
+
+  h3 {
+    font-size: 14px;
+  }
+
+  img {
+    width: 15px;
+  }
+}
+

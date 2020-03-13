@@ -1,0 +1,60 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <% friends.each do |user| %>
+        <div class="row friend-card-wrapper">
+          <div class="col-md-4 friend-card-left">
+            <h3><%= user.first_name %> <%= user.last_name %></h3>
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key %>
+            <% else %>
+              <%= image_tag 'logo.png' %>
+            <% end %>
+          </div>
+          <div class="col-md-4 friend-card-center">
+            <div class="common-friends-box">
+              <h3>Mutual friends</h3>
+              <% current_user.common_friends(user).each do |common_friend| %>
+                <%= image_tag 'logo.png' %>
+              <% end %>
+            </div>
+            <div>
+              <%= link_to "Add", add_friends_path(user), method: :post %>
+            </div>
+          </div>
+          <div class="col-md-4 friend-card-right">
+            <% if user.flats.exists? %>
+              <%= user.flats.first.photos[0] %>
+            <% else %>
+              <p>This user has no flats</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+</div>
+
+<% friends.each do |user| %>
+
+  <% unless user.blocked_friends.include? current_user %>
+
+  <h2><%= user.first_name %></h2>
+  <p><%= user.email %></p>
+
+  <% if current_user.pending_friends.include?(user) %>
+  "Friendship Requested"
+  <% elsif current_user.friends.include?(user) %>
+  Accepted
+
+  <%= link_to "Remove", remove_friends_path(user), method: :post %>
+  <% else %>
+  <%= link_to "Add", add_friends_path(user), method: :post %>
+  <% end %>
+
+
+<% end %>
+<% end %>
