@@ -2,7 +2,7 @@
 const scrollToTopButton = document.getElementById('js-top');
 
 // Let's set up a function that shows our scroll-to-top button if we scroll beyond the height of the initial window.
-const scrollFunc = () => {
+const initScrollFunc = () => {
   // Get the current scroll value
   let y = window.scrollY;
   
@@ -14,7 +14,7 @@ const scrollFunc = () => {
   }
 };
 
-window.addEventListener("scroll", scrollFunc);
+window.addEventListener("scroll", initScrollFunc);
 
 const scrollToTop = () => {
   // Let's set a variable for the number of pixels we are from the top of the document.
