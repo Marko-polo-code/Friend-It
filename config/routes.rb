@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'flats#index'
+  root to: 'pages#welcome'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :flats do 
+  resources :flats do
     resources :bookings, only: [:create]
     resources :recommendations, only: [:new, :create]
     resources :contacts, only: [:new, :create, :show]
@@ -12,12 +12,12 @@ Rails.application.routes.draw do
   end
 
 
-  resources :swap_requests, only: [] do 
+  resources :swap_requests, only: [] do
     put :accept
     put :reject
   end
 
-  resources :bookings, only: [:show] do 
+  resources :bookings, only: [:show] do
     put :accept
     put :reject
   end
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :recommendations, only: [:edit, :delete, :update]
   resources :contacts, only: [:edit, :delete, :update]
 
+  get "/welcome", to: "pages#welcome", as: :welcome
   get "/admin_dashboard", to: "pages#admin_dashboard", as: :admin_dashboard
   get "/dashboard", to: "pages#dashboard", as: :dashboard
   get "/find_friends", to: "friends#find_friends", as: :find_friends
