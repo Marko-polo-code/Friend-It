@@ -14,43 +14,45 @@
             <% end %>
           </div>
           <div class="col-md-4 friend-card-center">
+            <h3>Mutual friends</h3>
             <div class="common-friends-box">
-              <h3>Mutual friends</h3>
               <% current_user.common_friends(user).each do |common_friend| %>
                 <% if common_friend.photo.attached? %>
                   <%= cl_image_tag common_friend.photo.key %>
                 <% else %>
-                  <img src="https://cdn2.vectorstock.com/i/1000x1000/38/21/male-face-avatar-logo-template-pictogram-vector-11333821.jpg" alt="">
+                  <%= image_tag "https://source.unsplash.com/#{rand(1200..1400)}x#{rand(900..1000)}/?face,men,woman", class: "friend-image-small" %>
+                  <!-- <i class="fas fa-user-circle" style="color: gray"></i> -->
                 <% end %>
               <% end %>
             </div>
             <div>
               <% if current_user.pending_friends.include?(user) %>
-                Friendship Requested
+                <p style="opacity: 0.6">Friendship requested</p>
               <% elsif current_user.friends.include?(user) %>
                 <p style="opacity: 0.6">Accepted</p>
                 <% else %>
-                  <%= link_to "Add!", add_friends_path(user), method: :post, class: "btn btn-primary", style:"font-size: 12px; margin-top: 10px;" %>
+                <div class="button-wrapper">
+                  <%= link_to "FriendIt", add_friends_path(user), method: :post, class: "btn btn-primary", style:"font-size: 12px; margin-top: 10px;" %>
+                </div>
               <% end %>
             </div>
           </div>
           <div class="col-md-4 friend-card-right">
-            <h3>Flats</h3>
-
+            <h3>Available flats</h3>
             <% if user.flats.empty? %>
-              <p>No flat for the user</p>
-            <% elsif user.flats.any? && user.flats.first.photos[0].nil? %>
-              <%= user.flats.first.title %>
-              <p>No images</p>
+              <p>This user has made no flat available</p>
             <% else %>
-              <%= link_to user.flats.first.title, flat_path(user.flats.first) %>
-              <%#= cl_image_tag user.flats.first.photos[0].key %>
+              <% user.flats.each do |flat| %>
+                <%= link_to flat.title, flat_path(flat), class: "btn btn-ghost", style: "text-transform: capitalize; font-size: 10px; margin: 3px;" %>
+              <% end %>
             <% end %>
           </div>
         </div>
       <% end %>
     </div>
 
+<!--     , style:"font-size: 12px; text-transform: capitalize;"
+ -->
 
     <div class="col-md-5">
       <div id="map"
