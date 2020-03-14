@@ -2,7 +2,43 @@
 <div class="container">
   <div class="row">
      <div class="col-8">
-       
+
+
+            <div class="slider">
+              <input type="radio" name="slide_switch" id="id1"/>
+              <label for="id1">
+                <img src="http://thecodeplayer.com/uploads/media/3yiC6Yq.jpg" width="100"/>
+              </label>
+              <img src="http://thecodeplayer.com/uploads/media/3yiC6Yq.jpg"/>
+              
+              <!--Lets show the second image by default on page load-->
+              <input type="radio" name="slide_switch" id="id2" checked="checked"/>
+              <label for="id2">
+                <img src="http://thecodeplayer.com/uploads/media/40Ly3VB.jpg" width="100"/>
+              </label>
+              <img src="http://thecodeplayer.com/uploads/media/40Ly3VB.jpg"/>
+              
+              <input type="radio" name="slide_switch" id="id3"/>
+              <label for="id3">
+                <img src="http://thecodeplayer.com/uploads/media/00kih8g.jpg" width="100"/>
+              </label>
+              <img src="http://thecodeplayer.com/uploads/media/00kih8g.jpg"/>
+              
+              <input type="radio" name="slide_switch" id="id4"/>
+              <label for="id4">
+                <img src="http://thecodeplayer.com/uploads/media/2rT2vdx.jpg" width="100"/>
+              </label>
+              <img src="http://thecodeplayer.com/uploads/media/2rT2vdx.jpg"/>
+              
+              <input type="radio" name="slide_switch" id="id5"/>
+              <label for="id5">
+                <img src="http://thecodeplayer.com/uploads/media/8k3N3EL.jpg" width="100"/>
+              </label>
+              <img src="http://thecodeplayer.com/uploads/media/8k3N3EL.jpg"/>
+            </div>
+
+          <br>
+
         <h3><%= @flat.title %></h3>
         <p><%= @flat.description %></p>
         <p><i class="fas fa-dollar-sign"></i><%= @flat.price %></p>
@@ -41,16 +77,25 @@
                 <%= f.input :number_of_guests %>
                 <%= f.submit "Book", class: "btn btn-primary" %>
               <% end %>
-          <% end %>
+            <% end %>
         </div>
+      </div>
     </div>
-  </div>
 
 
         <%= link_to "Back", flats_path, class: "btn btn-primary" %></p>
+
         <% if @flat.user == current_user %>
           <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-primary" %>
         <% end %>
+
+       <% if @flat.user == current_user %>
+        <%= link_to "Add Recommendation", new_flat_recommendation_path(@flat), class: "btn btn-primary" %>
+      <% end %>
+
+      <% if @flat.user == current_user %>
+        <%= link_to "Add Contact", new_flat_contact_path(@flat), class: "btn btn-primary" %>
+      <% end %>
 
     <div class="col-md-8">
         <div id="map"
@@ -62,5 +107,4 @@
     </div>
   </div>
 </div>
-
 

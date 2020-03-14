@@ -9,7 +9,7 @@ class RecommendationsController < ApplicationController
     @recommendation = Recommendation.new(recommendation_params)
     @recommendation.flat = @flat
     if @recommendation.save
-      redirect_to new_flat_contact_path(@flat)
+      redirect_to flat_path(@flat)
     else
       render :new 
     end
