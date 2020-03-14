@@ -2,42 +2,36 @@
 <div class="container">
   <div class="row">
      <div class="col-8">
-        <div class="d-flex border-bottom justify-content-between">
-          <div class="d-flex flex-column align-items-center">
+       
+        <h3><%= @flat.title %></h3>
+        <p><%= @flat.description %></p>
+        <p><i class="fas fa-dollar-sign"></i><%= @flat.price %></p>
+        <span><i class="fas fa-exchange-alt"></i><%= @flat.swappable ? "This flat is swappable" : "This flat is not swappable" %>: </span><%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-primary"%>
 
+        <br>
 
-            <p><%= @flat.title %></p>
-            <p>$<%= @flat.price %></p>
-            <p><%= @flat.description %></p>
+        <span>Owner:<%= @flat.user.first_name %></span> <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
 
-          
+        <br>
+        <br>
 
-            <p><%= @flat.swappable ? "This flat is swappable" : "This flat is not swappable" %></p>
+      <ul class="list-group list-group-horizontal">
 
-            <p>Number of bathrooms: <%= @flat.number_of_bathrooms %></p>
-            <p>Number of bedrooms: <%= @flat.number_of_bedrooms %></p>
-            <p>Number of beds: <%= @flat.number_of_beds %></p>
-            <p>Owner:<%= @flat.user.first_name %></p>
-            <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+        <li class="list-group-item"><i class="fas fa-bed"></i>Number of bedrooms: <%= @flat.number_of_bedrooms %></li>
+        <li class="list-group-item"><i class="fas fa-restroom"></i>Number of bathrooms: <%= @flat.number_of_bathrooms %></li>
+        <li class="list-group-item"><i class="fas fa-person-booth"></i>Number of beds: <%= @flat.number_of_beds %></li>
 
-          
-        </div>
+      </ul>
+   
 
-
-
-
-
+      <br>
+      <br>
 
       </div>
 
-    <%= link_to "Back", flats_path, class: "btn btn-primary" %></p>
 
-    <% if @flat.user == current_user %>
 
-       <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-primary" %>
-    <% end %>
 
-    </div>
     <div class="col-4">
       <div id='flat-booking-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
           <% if current_user.id != @flat.user_id  %>
@@ -46,11 +40,17 @@
                 <%= f.input :end_date, as: :string, type: :text %>
                 <%= f.input :number_of_guests %>
                 <%= f.submit "Book", class: "btn btn-primary" %>
-                <%= link_to "Swap It", new_flat_swap_request_path(@flat), class: "btn btn-primary"%>
               <% end %>
           <% end %>
         </div>
     </div>
+  </div>
+
+
+        <%= link_to "Back", flats_path, class: "btn btn-primary" %></p>
+        <% if @flat.user == current_user %>
+          <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-primary" %>
+        <% end %>
 
     <div class="col-md-8">
         <div id="map"
