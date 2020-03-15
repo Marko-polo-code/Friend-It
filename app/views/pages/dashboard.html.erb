@@ -28,17 +28,20 @@
             <img src="https://source.unsplash.com/<%=rand(1400..1600) %>x900/?luxury-apartment" alt="" class="card-img-top">
         </div>
         <div class="card-content">
-          <span class="card-title activator"><%= booking.flat.title %><i class="material-icons right">expand_less</i></span>
+          <span class="card-title activator"><%= booking.flat.title %><i class="material-icons right">expand_more</i></span>
           <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
           <p><%= booking.flat.user.first_name %>- <%= booking.flat.user.last_name%></p>
             <% unless booking.status == "rejected" %>
         </div>
             <div class="card-reveal">
-                <p> <%= booking.start_date %> </p>
+                <p> <%= booking.start_date %></p>
+                <br>
                 <p> <%= booking.end_date %> </p>
-                <p>$<%= booking.flat.price %> </p>
-              <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-              <%= link_to "Flat Info", flat_info_path(booking.flat), class: "btn btn-primary" %>
+                <br>
+                <p><i class="fas fa-dollar-sign"></i><%= booking.flat.price %> </p>
+                <br>
+              <span class="card-title grey-text text-darken-4"><i class="material-icons right">expand_less</i></span>
+              <%= link_to "Discover", flat_info_path(booking.flat), class: "btn btn-primary" %>
            </div>
           <% end %>
         </div>
@@ -69,6 +72,8 @@
                   <p><%= request.requested_flat.description%></p>
                   <span><%= request.requested_flat.user.first_name%> <%= request.requested_flat.user.last_name %><span>
                   <p><%= request.status %></p>
+                  <p><%= request.start_date %></p>
+                  <p><%= request.end_date %></p>
                 </div>
               <% end %>
             </div>
@@ -97,8 +102,6 @@
                   <span><%= request.requested_flat.user.first_name%> <%= request.requested_flat.user.last_name %><span>
                   <p> <%= request.status %></p>
                   <p><%= request.requested_flat.address%></p>
-                  <p><%= request.start_date %></p>
-                  <p><%= request.end_date %></p>
                 </div>
               <% end %>
             </div>
