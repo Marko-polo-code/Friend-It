@@ -6,8 +6,8 @@ import { initSwapFlatpickr } from '../plugins/init_swapflatpickr';
 import { initMapbox } from '../plugins/init_mapbox';
 // import { initScrollFunc } from '../plugins/init_scroll_up_button';
 
-// initScrollFunc();
 initFlatpickr();
 initSwapFlatpickr();
 initMapbox();
+// initScrollFunc();
 

@@ -39,14 +39,12 @@
 
 
 <div id="profile2" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
-
   <div class="container-fluid">
     <div class="row">
-                <% @flat.contacts.each do |contact| %>
+      <% @flat.contacts.each do |contact| %>
       <div class="col s12 m6">
         <div class="card hoverable">
           <div class="card-image">
-            <a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">add</i></a>
             <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60">
                 <div class="card-content">
                 <p> <%= contact.phone_number %> </p>
@@ -56,8 +54,9 @@
             </div>
           </div>
         </div>
-                <% end %>
-      </div>
+    <% end %>
     </div>
   </div>
+</div>
+
 </div>
