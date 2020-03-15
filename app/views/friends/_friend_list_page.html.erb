@@ -1,6 +1,6 @@
-
-
 <div class="container">
+
+
   <div class="row">
     <div class="col-md-7">
       <% friends.each do |user| %>
@@ -14,7 +14,14 @@
             <% end %>
           </div>
           <div class="col-md-4 friend-card-center">
-            <h3>Mutual friends</h3>
+
+
+
+
+
+
+            <a class="h3" href="" data-toggle="modal" data-target="#exampleModalScrollable">Mutual friends</a>
+
             <div class="common-friends-box">
               <% current_user.common_friends(user).each do |common_friend| %>
                 <% if common_friend.photo.attached? %>
@@ -25,6 +32,11 @@
                 <% end %>
               <% end %>
             </div>
+
+
+
+
+
             <div>
               <% if current_user.pending_friends.include?(user) %>
                 <p style="opacity: 0.6">Friendship requested</p>
