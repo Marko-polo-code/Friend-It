@@ -5,14 +5,16 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-    <form action="/">
-      <input type="text" id="search-bar" name="query" placeholder="Search...">
-      <input type="submit" class="btn btn-primary-info ml-2">
-    </form>
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
+    <form action="/">
+      <input type="text" id="search-bar" name="query" placeholder="Search...">
+      <input type="submit" class="btn btn-primary-info ml-2">
+    </form>
+    
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to "Host", admin_dashboard_path, class: "nav-link" %>
