@@ -3,6 +3,12 @@
   background: #F8CF90;
 }
 
+.transparent-background {
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
