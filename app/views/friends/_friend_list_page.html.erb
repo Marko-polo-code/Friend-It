@@ -1,9 +1,50 @@
 <div class="container">
 
 
+
+
   <div class="row">
     <div class="col-md-7">
       <% friends.each do |user| %>
+
+      <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Mutual friends</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="d-flex flex-column">
+                  <% current_user.common_friends(user).each do |common_friend| %>
+                    <% if common_friend.photo.attached? %>
+                    <div class="d-flex justify-space-between" style="width: 200px;" >
+                      <%= cl_image_tag common_friend.photo.key, class: "friend-image-small" %>
+                       <%=link_to "#{common_friend.first_name} #{common_friend.last_name}", "#" %>
+                    </div>
+                    <% else %>
+                    <div class="d-flex justify-space-between" style="width: 200px;">
+                      <%= image_tag "https://source.unsplash.com/#{rand(1200..1400)}x#{rand(900..1000)}/?face,men,woman", class: "friend-image-small" %>
+                      <%=link_to "#{common_friend.first_name} #{common_friend.last_name}", "#" %>
+                    </div>
+                    <% end %>
+
+                  <% end %>
+                </div>
+              </div>
+<!--               <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <!-- end of Modal -->
+
+        <!-- avatar and name -->
         <div class="row friend-card-wrapper">
           <div class="col-md-4 friend-card-left">
             <h3><%= user.first_name %> <%= user.last_name %></h3>
@@ -13,28 +54,22 @@
               <%= image_tag "https://source.unsplash.com/#{rand(1200..1400)}x#{rand(900..1000)}/?face,men,woman", class: "friend-image" %>
             <% end %>
           </div>
+          <!-- avatar and name -->
+
+
+          <!-- mutual friends box -->
           <div class="col-md-4 friend-card-center">
-
-
-
-
-
-
-            <a class="h3" href="" data-toggle="modal" data-target="#exampleModalScrollable">Mutual friends</a>
-
-            <div class="common-friends-box">
+            <a class="h3" href="" data-toggle="modal" data-target="#exampleModal">Mutual friends</a>
+            <div>
               <% current_user.common_friends(user).each do |common_friend| %>
                 <% if common_friend.photo.attached? %>
                   <%= cl_image_tag common_friend.photo.key %>
                 <% else %>
                   <%= image_tag "https://source.unsplash.com/#{rand(1200..1400)}x#{rand(900..1000)}/?face,men,woman", class: "friend-image-small" %>
-                  <!-- <i class="fas fa-user-circle" style="color: gray"></i> -->
                 <% end %>
               <% end %>
             </div>
-
-
-
+            <!-- end of mutual friends box -->
 
 
             <div>
@@ -49,6 +84,13 @@
               <% end %>
             </div>
           </div>
+
+
+
+
+        <!-- available flats, third columb of card -->
+
+
           <div class="col-md-4 friend-card-right">
             <h3>Available flats</h3>
             <% if user.flats.empty? %>
