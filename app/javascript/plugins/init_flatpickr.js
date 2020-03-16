@@ -32,4 +32,4 @@ const initFlatpickr = () => {
   };
 }
 
-export { initFlatpickr };
+  export { initFlatpickr };
