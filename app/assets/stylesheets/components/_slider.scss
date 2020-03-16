@@ -2,4 +2,15 @@
   position: relative;
   z-index: 1;
   margin-top: -122px;
+  min-height: 100vh;
+}
+
+.slides {
+  height: 100vh !important;
+  object-fit: cover !important;
+  min-width: 100% !important;
+}
+
+.caption {
+  margin-top: 30vh;
 }
