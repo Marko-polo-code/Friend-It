@@ -14,7 +14,7 @@
       <input type="text" id="search-bar" name="query" placeholder="Search...">
       <input type="submit" class="btn btn-primary-info ml-2">
     </form>
-    
+
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to "Host", admin_dashboard_path, class: "nav-link" %>
@@ -24,6 +24,9 @@
         </li>
         <li class="nav-item">
           <%= link_to "Home",flats_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Messages",conversations_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <span id="user">Hello - <%= current_user.first_name %></span>

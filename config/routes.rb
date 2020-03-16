@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     put :reject
   end
 
+  resources :conversations do
+   resources :messages
+  end
 
   resources :recommendations, only: [:edit, :delete, :update]
   resources :contacts, only: [:edit, :delete, :update]
