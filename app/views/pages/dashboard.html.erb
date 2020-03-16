@@ -25,10 +25,12 @@
         <div class="col-4">
           <div class="card hoverable">
            <div class="card-image waves-effect waves-block waves-light">
-            <img src="https://source.unsplash.com/<%=rand(1400..1600) %>x900/?luxury-apartment" alt="" class="card-img-top">
+           <% if booking.flat.photos.first %>
+             <%= cl_image_tag booking.flat.photos.first.key, class: "card-img-top hoverable" %>
+           <% end %>
         </div>
         <div class="card-content">
-          <span class="card-title activator"><%= booking.flat.title %><i class="material-icons right">expand_more</i></span>
+          <span class="card-title activator"><%= booking.flat.title %><i class="material-icons right"></i>expand_less</span>
           <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
           <p><%= booking.flat.user.first_name %>- <%= booking.flat.user.last_name%></p>
             <% unless booking.status == "rejected" %>
@@ -61,7 +63,9 @@
             <div class="card">
               <% if request.status == "pending" %>
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img src="https://source.unsplash.com/<%=rand(1400..1600) %>x900/?luxury-apartment" alt="" class="card-img-top">
+                <% if request.flat.photos.first %>
+                <%= cl_image_tag request.flat.photos.first.key, class: "card-img-top hoverable" %>
+                <% end %>
                 </div>
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4"><%=request.requested_flat.title %><i class="material-icons right">more_vert</i></span>
@@ -90,7 +94,9 @@
             <div class="card">
               <% if request.status != "pending" %>
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img src="https://source.unsplash.com/<%=rand(1400..1600) %>x900/?luxury-apartment" alt="" class="card-img-top">
+                 <% if request.flat.photos.first %>
+                  <%= cl_image_tag request.flat.photos.first.key, class: "card-img-top hoverable" %>
+                <% end %>
                 </div>
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4"><%=request.requested_flat.title %><a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">add</i></a></span>
