@@ -1,21 +1,57 @@
 class BookingsController < ApplicationController
- 
+
+
+# OLD SHOW METHOD
+#   # def show
+#   #   @booking = Booking.find(params[:id])
+#   # end
+# END OF OLD SHOW METHOD
+
   def show
-    @booking = Booking.find(params[:id])
+    @booking = current_user.bookings.find(params[:id])
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    # @booking.set_total_price
-    @flat = Flat.find(params[:flat_id])
-    @booking.flat = @flat
-    @booking.user = current_user
-    if @booking.save
-      redirect_to booking_path(@booking)
-    else
-      render "flats/show" 
-    end
+    flat = Flat.find(params[:flat_id])
+    booking = Booking.new(booking_params)
+    booking.flat = flat
+    booking.user = current_user
+    rental_period = booking.end_date - booking.start_date
+    booking.amount = flat.price*rental_period
+    booking.save
+    Booking.update(flat: flat, amount: booking.amount, status: 'pending', user: current_user)
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: flat.title,
+        amount: flat.price_cents,
+        currency: 'eur',
+        quantity: 1
+      }],
+      success_url: booking_url(booking),
+      cancel_url: booking_url(booking)
+    )
+
+    booking.update(checkout_session_id: session.id)
+    redirect_to new_booking_payment_path(booking)
+
   end
+
+# OLD CREATE METHOD
+
+  # def create
+  #   @booking = Booking.new(booking_params)
+  #   # @booking.set_total_price
+  #   @flat = Flat.find(params[:flat_id])
+  #   @booking.flat = @flat
+  #   @booking.user = current_user
+  #   if @booking.save
+  #     redirect_to booking_path(@booking)
+  #   else
+  #     render "flats/show"
+  #   end
+  # end
 
 
   def accept

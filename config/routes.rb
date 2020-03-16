@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#welcome'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :flats do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :show]
     resources :recommendations, only: [:new, :create]
     resources :contacts, only: [:new, :create, :show]
     resources :swap_requests, only: [:new, :show, :create]
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:show] do
     put :accept
     put :reject
+    resources :payments, only: :new
   end
 
   resources :conversations do
