@@ -1,5 +1,5 @@
 
-  
+
 
 <div class="container-fluid px-5">
   <div class="row">
@@ -14,7 +14,7 @@
               <h1><%= link_to flat.title, flat_path(flat) %></h1>
               <p> <%= flat.description.truncate(150) %></p>
               <p><i class="fas fa-map-marker-alt"></i><%= flat.address %></p>
-              <p><i class="fas fa-dollar-sign"></i><%= flat.price %></p>
+              <div class="d-flex"><i class="fas fa-dollar-sign"></i><p><%= flat.price%></p></div>
 
             </div>
           </div>
@@ -22,7 +22,7 @@
     </div>
     <div class="col-md-4">
         <div id="map"
-        style="width: 100%; height: 100vh"        
+        style="width: 100%; height: 100vh"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
