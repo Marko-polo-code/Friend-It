@@ -77,6 +77,7 @@ class FlatsController < ApplicationController
 
   def info
     @flat = Flat.find(params[:flat_id])
+    @markers = @flat.recommendations.map { |rec| { lat: rec.latitude  , lng: rec.longitude } }
   end
 
   private
