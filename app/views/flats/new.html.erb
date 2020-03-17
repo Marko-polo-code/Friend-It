@@ -14,6 +14,9 @@
               <%= f.input :number_of_bedrooms %>
               <%= f.input :number_of_bathrooms %>
               <%= f.input :number_of_beds %>
+              <%= f.fields_for :flat_perk do |fp| %>
+                <%= fp.input :perk, collection: Perk.all, input_html: { multiple: true, class: "select2" } %>
+              <% end %>
               <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
               <%= f.submit %>
@@ -32,7 +35,6 @@
       </div>
     </div>
   </div>
-
 
 
 

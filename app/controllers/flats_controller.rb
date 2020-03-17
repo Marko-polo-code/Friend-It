@@ -44,12 +44,15 @@ class FlatsController < ApplicationController
 
   def new
     @flat = Flat.new
+    @flat.flat_perks.build
+    @markers = []
   end
 
   def create
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     if @flat.save
+      create_flat_perks(@flat)
       redirect_to flat_path(@flat)
     else
       render :new
@@ -83,7 +86,24 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:address, :swappable, :price, :description, :title, :number_of_bathrooms, :number_of_bedrooms, :number_of_beds, :number_of_guests, photos: [])
+    params.require(:flat).permit(:address, :swappable, :price, :description, :title, :number_of_bathrooms, :number_of_bedrooms, :number_of_beds, :number_of_guests, photos: [], flat_perk: [])
+  end
+
+  def create_flat_perks(flat)
+    params[:flat][:flat_perk][:perk].reject(&:blank?).each do |id_or_name|
+      if id_or_name.to_i > 0
+        FlatPerk.create(perk_id: id_or_name, flat: flat)
+      else
+        perk = Perk.new(name: id_or_name)
+        unless perk.save
+          raise
+        end
+        fp = FlatPerk.new(perk: perk, flat:flat)
+        unless fp.save
+          raise
+        end
+        end
+    end
   end
 end
 

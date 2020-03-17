@@ -1,11 +1,19 @@
- <div class="container">
-  
+<div class="container">
+  <div class="row">
 
-  <%= simple_form_for([@flat, @recommendation]) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :address %>
-    <%= f.submit %>
-  <% end %>
 
+    <div class="col-md-6 mx-auto">
+      <div class="card-panel">  
+
+        <%= simple_form_for([@flat, @recommendation]) do |f| %>
+          <%= f.input :name, label: false, wrapper_html: { class: 'fas fa-user-check'}, placeholder: "Name" %>
+          <%= f.input :description, label: false, wrapper_html: { class: 'fas fa-bookmark'}, placeholder: "Description" %>
+          <%= f.input :address, label: false, wrapper_html: { class: 'fas fa-map-marker-alt'}, placeholder: "Address" %>
+          <%= f.submit %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
 </div>
+
