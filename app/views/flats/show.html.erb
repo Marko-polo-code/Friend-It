@@ -3,18 +3,31 @@
   <div class="row">
      <div class="col-8">
       <% if @flat.photos.first %>
-          <%= cl_image_tag @flat.photos.first.key, class: "card-img-top hoverable" %>
+          <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400, crop: :fill, class: "card-img-top hoverable" %>
         <% end %>
         <h3><%= @flat.title %></h3>
         <p><%= @flat.description %></p>
         <p><i class="fas fa-dollar-sign"></i><%= @flat.price %></p>
 
-        <span><i class="fas fa-exchange-alt"></i><%= @flat.swappable ? "This flat is swappable" : "This flat is not swappable" %>: </span><%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-primary"%>
+        <i class="fas fa-exchange-alt"></i>
+        <span>
+        <% if @flat.swappable %>
+          This flat is swappable
+        </span>
+        <%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-primary"%>
+        <% else %>
+          This flat is not swappable
+          </span>
+        <% end %>
 
         <br>
 
-        <span>Owner:<%= @flat.user.first_name %></span> <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
-
+        <span>Owner:<%= @flat.user.first_name %></span> 
+        <% if @flat.user.photo.attached? %>
+          <%= cl_image_tag @flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+        <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+        <% end %>
         <br>
         <br>
 
@@ -75,4 +88,9 @@
     </div>
   </div>
 </div>
+
+<a class="top-link hide" href="" id="js-top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
+  <span class="screen-reader-text">Back to top</span>
+</a>
 

@@ -8,7 +8,7 @@
           <div class="flat-card row">
             <div class="card-img-box col-sm-5">
             <% if flat.photos.first %>
-              <%= cl_image_tag flat.photos.first.key, class: "card-img-top hoverable" %>
+              <%= cl_image_tag flat.photos.first.key,  height: 300, width: 400, crop: :fill, class: "card-img-top hoverable" %>
             <% end %>
             </div>
             <div class="col-sm-7 card-text-box">
