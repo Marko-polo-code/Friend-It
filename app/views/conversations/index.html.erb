@@ -1,19 +1,19 @@
-<div class="container mailbox my-4">
+<div class="container mailbox">
  <h3 class="mb-title">Mailbox</h3>
  <div class="contacts">
    <% @conversations.each do |conversation| %>
     <% unless conversation.messages.empty? %>
-      <%= link_to   conversation_messages_path(conversation) do %>
-      <div class="item my-3">
+      <%= link_to conversation_messages_path(conversation), class: "remove-decoration" do %>
+      <div class="item">
        <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
         <% if conversation.sender_id == current_user.id %>
           <% recipient = User.find(conversation.recipient_id) %>
         <% else %>
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-         <div class="d-flex">
-          <p><%= recipient.first_name %></p>
-          <div class="mb-text"><%= conversation.messages.last.body.truncate(35) %></div>
+         <div class="d-flex mb-decoration">
+          <p class="sender-name"><%= recipient.first_name %></p>
+          <div class="mb-text"><%= conversation.messages.last.body.truncate(35).capitalize %></div>
         </div>
        <% end %>
       </div>
@@ -28,8 +28,8 @@
   <div class="contacts">
    <% @users.each do |user| %>
       <% if user.id != current_user.id %>
-       <div class="item my-3">
-     <%#= user.avatar %> <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-ghost"%>
+       <div class="item">
+      <%#= user.avatar %> <%= user.first_name %> <%= link_to 'Message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-ghost"%> -->
         </div>
     <% end %>
  <% end %>
