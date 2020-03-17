@@ -8,6 +8,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { materialDesign } from '../plugins/init_landing';
 import { initScrollFunc } from '../plugins/init_scroll_up_button';
 import { initSelect2 } from '../plugins/init_select2';
+import { toggleMap } from '../dom/map_toggle.js'
 
 
 initFlatpickr();
@@ -16,4 +17,4 @@ initMapbox();
 materialDesign();
 initScrollFunc();
 initSelect2();
-console.log(888)
+toggleMap();

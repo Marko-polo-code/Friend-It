@@ -39,9 +39,17 @@
 
       </ul>
    
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <div class="card-panel">
       <% @flat.perks.each do |perk| %>
-      <%= perk.name %>
+      <span><i class="fas fa-check"></i><%= perk.name %></span>
       <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
       <br>
       <br>
