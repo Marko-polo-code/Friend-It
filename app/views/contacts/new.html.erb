@@ -1,13 +1,23 @@
- <div class="container">
   
 
-  <%= simple_form_for([@flat, @contact]) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :phone_number %>
-    <%= f.input :address %>
-    <%= f.input :description %>
-    <%= f.submit %>
-  <% end %>
+  <div class="container">
+    <div class="row">
 
+      <div class="col-md-6 mx-auto">
+        <div class="card-panel">  
+
+
+        <%= simple_form_for([@flat, @contact]) do |f| %>
+          <%= f.input :name, label: false, wrapper_html: { class: 'fas fa-user-check'}, placeholder: "Name"%>
+          <%= f.input :phone_number, label: false, wrapper_html: { class: 'fas fa-mobile-alt'}, placeholder: "Phone Number" %>
+          <%= f.input :address, label: false, wrapper_html: { class: 'fas fa-map-marker-alt'}, placeholder: "Address" %>
+          <%= f.input :description, label: false, wrapper_html: { class: 'fas fa-bookmark'}, placeholder: "Description" %>
+          <%= f.submit %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
 </div>
+
 

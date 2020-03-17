@@ -108,3 +108,20 @@ i.right {
   transform: translateY(-3px);
   transition: all 0.5s ease ;
 }
+
+.h3 {
+  text-decoration: none !important;
+  color: orange;
+  font-size: 20px;
+
+}
+
+.mb-text {
+  text-decoration: none !important;
+  color: orange;
+}
+
+.mb-text:hover {
+  transform: translateY(-3px);
+  transition: all 0.5s ease ;
+}
