@@ -1,3 +1,5 @@
+
+
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#welcome'
@@ -41,6 +43,9 @@ Rails.application.routes.draw do
   post "/remove_friends/:id", to: "friends#remove_friends", as: :remove_friends
 
   post "/swap_requests/:id/accept", to: "swap_requests#accept", as: :accept_swap_request
+
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
+
 
 end
 

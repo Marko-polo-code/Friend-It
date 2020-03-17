@@ -23,6 +23,8 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'faker'
 gem 'money-rails'
 gem 'stripe'
+gem 'stripe_event'
+
 
 
 
