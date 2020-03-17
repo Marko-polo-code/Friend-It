@@ -1,0 +1,21 @@
+.mailbox {
+ border: 1px solid $coolblack;
+ border-radius: 8px;
+ padding: 16px;
+}
+
+.contacts {
+  border: 1px solid $coolyellow;
+}
+
+.mb-title {
+  border-bottom: 2px solid $coolyellow;
+  color: $coolblack;
+  padding-bottom: 10px;
+}
+
+.item {
+  border-bottom: 2px solid $coolyellow;
+  padding-bottom: 10px;
+  padding: 16px;
+}
