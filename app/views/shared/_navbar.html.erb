@@ -1,6 +1,9 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to (image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png")), flats_path, class: "navbar-brand" %>
-
+<% if controller_name == "pages" && action_name == "welcome" %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon transparent-background">
+<% else %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<% end %>
+  <%= link_to (image_tag("https://res.cloudinary.com/dncij7vr6/image/upload/v1584332578/LogoMakr_5ylzoP_ntpkfd.png")), flats_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
