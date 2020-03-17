@@ -10,3 +10,26 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+#search-btn {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  i {
+    font-size: 2rem;
+  }
+
+}
+
+#searchBar {
+  background-color: transparent;
+  width: 250px;
+  height: 30px;
+  i {
+    font-size: 2rem;
+  }
+}
+
+.d-flex {
+  padding-left: 30px;
+}

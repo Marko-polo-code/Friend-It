@@ -1,17 +1,21 @@
 // Set a variable for our button element.
+
+
 const scrollToTopButton = document.getElementById('js-top');
 
 // Let's set up a function that shows our scroll-to-top button if we scroll beyond the height of the initial window.
 const initScrollFunc = () => {
   // Get the current scroll value
   let y = window.scrollY;
+  if (scrollToTopButton){
+    if (y > 0) {
+      scrollToTopButton.className = "top-link show";
+    } else {
+      scrollToTopButton.className = "top-link hide";
+    }
   
-  // If the scroll value is greater than the window height, let's add a class to the scroll-to-top button to show it!
-  if (y > 0) {
-    scrollToTopButton.className = "top-link show";
-  } else {
-    scrollToTopButton.className = "top-link hide";
   }
+  // If the scroll value is greater than the window height, let's add a class to the scroll-to-top button to show it!
 };
 
 window.addEventListener("scroll", initScrollFunc);
@@ -32,7 +36,12 @@ const scrollToTop = () => {
 };
 
 // When the button is clicked, run our ScrolltoTop function above!
-scrollToTopButton.onclick = function(e) {
-  e.preventDefault();
-  scrollToTop();
+if (scrollToTopButton){
+  scrollToTopButton.onclick = function(e) {
+    e.preventDefault();
+    scrollToTop();
+  }
+  
 }
+
+export { initScrollFunc }

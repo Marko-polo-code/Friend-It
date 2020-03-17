@@ -26,12 +26,16 @@
           <div class="card hoverable">
            <div class="card-image waves-effect waves-block waves-light">
            <% if booking.flat.photos.first %>
-             <%= cl_image_tag booking.flat.photos.first.key, class: "card-img-top hoverable" %>
+             <%= cl_image_tag booking.flat.photos.first.key, height: 300, width: 300, crop: :fill,  class: "card-img-top hoverable" %>
            <% end %>
         </div>
         <div class="card-content">
-          <span class="card-title activator"><%= booking.flat.title %><i class="material-icons right"></i>expand_less</span>
-          <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+          <span class="card-title activator"><%= booking.flat.title %><i class="material-icons right">add</i></span>
+           <% if booking.flat.user.photo.attached? %>
+            <%= cl_image_tag booking.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+            <% else %>
+              <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+            <% end %>
           <p><%= booking.flat.user.first_name %>- <%= booking.flat.user.last_name%></p>
             <% unless booking.status == "rejected" %>
         </div>
@@ -69,7 +73,11 @@
                 </div>
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4"><%=request.requested_flat.title %><i class="material-icons right">more_vert</i></span>
-                  <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+                  <% if request.flat.user.photo.attached? %>
+                  <%= cl_image_tag request.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                  <% else %>
+                    <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+                <% end %>
                 </div>
                 <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4"><%=request.requested_flat.title %><i class="material-icons right">close</i></span>
