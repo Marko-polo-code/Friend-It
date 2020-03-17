@@ -2,70 +2,32 @@
 <div class="container">
   <div class="row">
      <div class="col-8">
-    
-
-    <div class="container">
-	        <div id="content-slider">
-          	<div id="slider">
-            <div id="mask">
-              <ul>
-              <li id="first" class="firstanimation">
-              <a href="#">
-              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="Cougar"/>
-              </a>
-              <div class="tooltip">
-              </div>
-              </li>
-
-              <li id="second" class="secondanimation">
-              <a href="#">
-              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1946&q=80" alt="Lions"/>
-              </a>
-              <div class="tooltip">
-              </div>
-              </li>
-              
-              <li id="third" class="thirdanimation">
-              <a href="#">
-              <img src="https://images.unsplash.com/photo-1509849144747-3feb484bc920?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Snowalker"/>
-              </a>
-              <div class="tooltip">
-              </div>
-              </li>
-                          
-              <li id="fourth" class="fourthanimation">
-              <a href="#">
-              <img src="https://images.unsplash.com/photo-1534448378918-8e5d5aa58d7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Howling"/>
-              </a>
-              <div class="tooltip">
-              </div>
-              </li>
-                          
-              <li id="fifth" class="fifthanimation">
-              <a href="#">
-              <img src="https://images.unsplash.com/photo-1529408632839-a54952c491e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Sunbathing"/>
-              </a>
-              <div class="tooltip">
-              </div>
-              </li>
-              </ul>
-              </div>
-              <div class="progress-bar"></div>
-          </div>
-      </div>
-  </div>
-    
-
+      <% if @flat.photos.first %>
+          <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400, crop: :fill, class: "card-img-top hoverable" %>
+        <% end %>
         <h3><%= @flat.title %></h3>
         <p><%= @flat.description %></p>
         <p><i class="fas fa-dollar-sign"></i><%= @flat.price %></p>
 
-        <span><i class="fas fa-exchange-alt"></i><%= @flat.swappable ? "This flat is swappable" : "This flat is not swappable" %>: </span><%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-primary"%>
+        <i class="fas fa-exchange-alt"></i>
+        <span>
+        <% if @flat.swappable %>
+          This flat is swappable
+        </span>
+        <%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-primary"%>
+        <% else %>
+          This flat is not swappable
+          </span>
+        <% end %>
 
         <br>
 
-        <span>Owner:<%= @flat.user.first_name %></span> <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
-
+        <span>Owner:<%= @flat.user.first_name %></span> 
+        <% if @flat.user.photo.attached? %>
+          <%= cl_image_tag @flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+        <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+        <% end %>
         <br>
         <br>
 
@@ -115,8 +77,9 @@
           <%= link_to "Add a Contact", new_flat_contact_path(@flat) , class: "btn btn-primary"%>
         <% end %>
 
+</div>
 
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div id="map"
         style="width: 100%; height: 100vh"        
         data-markers="<%= @markers.to_json %>"
@@ -125,5 +88,9 @@
 
     </div>
   </div>
-</div>
+
+<a class="top-link hide" href="" id="js-top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
+  <span class="screen-reader-text">Back to top</span>
+</a>
 

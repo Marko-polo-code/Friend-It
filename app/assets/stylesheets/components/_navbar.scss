@@ -1,6 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #F8CF90;
+  background: #F2A65A;
+}
+
+.transparent-background {
+  background: transparent;
+  position: relative;
+  z-index: 2;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,3 +16,34 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+#search-btn {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  i {
+    font-size: 2rem;
+  }
+
+}
+
+#searchBar {
+  background-color: transparent;
+  width: 250px;
+  height: 30px;
+  i {
+    font-size: 2rem;
+  }
+}
+.d-flex {
+  padding-left: 30px;
+}
+
+.nav-link {
+  font-family: $headers-font !important;
+}
+
+.nav-link:hover, a:hover {
+  transform: translateY(-3px);
+  transition: all 0.5s ease ;
+} 

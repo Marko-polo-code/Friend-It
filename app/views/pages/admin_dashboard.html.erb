@@ -30,24 +30,34 @@
         <div class="col-4">
           <div class="card hoverable">
            <div class="card-image waves-effect waves-block waves-light">
-              <img src="https://source.unsplash.com/<%=rand(1400..1600) %>x900/?luxury-apartment" alt="" class="card-img-top">
+            <% if booking.flat.photos.first %>
+             <%= cl_image_tag booking.flat.photos.first.key,  height: 300, width: 300, crop: :fill, class: "card-img-top hoverable" %>
+            <% end %>
             </div>
               <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4"><%= booking.flat.title %><i class="material-icons right">more_vert</i></span>
-                <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
-
+                <span class="card-title activator"><%= booking.flat.title %><i class="material-icons right">add</i></span>
+                <% if booking.flat.user.photo.attached? %>
+                <%= cl_image_tag booking.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                <% else %>
+                  <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+                <% end %>
+              </div>
               <div class="card-reveal">
                 <p><%booking.status%></p>
                 <p> <%= booking.start_date %> </p>
                 <p> <%= booking.end_date %> </p>
                 <p>$<%= booking.flat.price %> </p>
-                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <span class="card-title grey-text text-darken-4"><i class="material-icons">expand_less</i></span>
+              </div>
+          </div>
 
 
-            <% unless booking.status == "accepted" || booking.status == "rejected" %>
-              <%= link_to 'accept', booking_accept_path(booking), class: "btn btn-primary", method: :put %>
-              <%= link_to 'reject', booking_reject_path(booking), class: "btn btn-primary", method: :put %>
-            <% end %>
+              <% unless booking.status == "accepted" || booking.status == "rejected" %>
+                <%= link_to 'accept', booking_accept_path(booking), class: "btn btn-primary", method: :put %>
+                <%= link_to 'reject', booking_reject_path(booking), class: "btn btn-primary", method: :put %>
+                <% else %>
+  
+              <% end %>
 
               <% booking.flat.recommendations.each do |recommendation| %>
                 <%= link_to "Edit Recommendation", edit_recommendation_path(recommendation) %>
@@ -55,12 +65,11 @@
                 <% booking.flat.contacts.each do |contact| %>
                 <%= link_to "Edit Contact", edit_contact_path(contact), class: "btn btn-primary" %>
                 <% end %>
-                </div>
-              </div>
             <% end %>
           </div>
-        </div>
       </div>
+    </div>
+  </div>
 
       <div id="contact3" role="tabpanel" aria-labelledby="contact3-tab" class="tab-pane fade px-4 py-5">
 
@@ -70,23 +79,30 @@
             <div class="col-4">
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img src="https://source.unsplash.com/<%=rand(1400..1600) %>x900/?luxury-apartment" alt="" class="card-img-top">
+                <% if request.flat.photos.first %>
+                  <%= cl_image_tag request.flat.photos.first.key, class: "card-img-top hoverable" %>
+                <% end %>
                 </div>
                   <div class="card-content">
                     <h2><%= request.requester_flat.user.first_name  %> wants to trade <%= link_to request.requester_flat.title, flat_path(request.requester_flat) %></h2>
                     <% unless request.status == "accepted" || request.status == "rejected" %>
-                    <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
-                    <p><%= link_to 'Accept', swap_request_accept_path(request), class: "btn btn-primary", method: :put %></p>
-                    <p><%= link_to 'Reject', swap_request_reject_path(request), class: "btn btn-primary", method: :put %></p>
+                     <% if request.flat.user.photo.attached? %>
+                      <%= cl_image_tag request.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                      <% else %>
+                        <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+                    <% end %>
+                      <p><%= link_to 'Accept', swap_request_accept_path(request), class: "btn btn-primary", method: :put %></p>
+                      <p><%= link_to 'Reject', swap_request_reject_path(request), class: "btn btn-primary", method: :put %></p>
                   <% end %>
                   </div>
                 </div>
               </div>
             <% end %>
+        </div>
             </div>
           </div>
-        </div>
-      </div>
+    </div>
+  </div>
 
 
  
