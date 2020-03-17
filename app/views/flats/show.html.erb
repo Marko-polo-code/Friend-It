@@ -77,8 +77,9 @@
           <%= link_to "Add a Contact", new_flat_contact_path(@flat) , class: "btn btn-primary"%>
         <% end %>
 
+</div>
 
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div id="map"
         style="width: 100%; height: 100vh"        
         data-markers="<%= @markers.to_json %>"
@@ -87,7 +88,6 @@
 
     </div>
   </div>
-</div>
 
 <a class="top-link hide" href="" id="js-top">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
