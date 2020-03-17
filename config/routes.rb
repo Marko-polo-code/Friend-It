@@ -1,9 +1,11 @@
+
+
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#welcome'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :flats do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :show]
     resources :recommendations, only: [:new, :create]
     resources :contacts, only: [:new, :create, :show]
     resources :swap_requests, only: [:new, :show, :create]
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:show] do
     put :accept
     put :reject
+    resources :payments, only: :new
   end
 
   resources :conversations do
@@ -40,6 +43,9 @@ Rails.application.routes.draw do
   post "/remove_friends/:id", to: "friends#remove_friends", as: :remove_friends
 
   post "/swap_requests/:id/accept", to: "swap_requests#accept", as: :accept_swap_request
+
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
+
 
 end
 

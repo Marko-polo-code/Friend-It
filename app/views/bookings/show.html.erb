@@ -1,4 +1,6 @@
-<div class="container">
+<!-- OLD SHOW -->
+
+<!-- <div class="container">
 
 	<p>Your Booking is:<%= @booking.status %> </p>
 	<p>Start Date:<%= @booking.start_date %> </p>
@@ -7,25 +9,42 @@
 	<p>Owner:<%= @booking.user.email %></p>
 
 	<ul>
-	<% @booking.flat.recommendations.each do |recommendation| %>
+	<%# @booking.flat.recommendations.each do |recommendation| %>
 
 		<li>
-			<%= recommendation.name %>
-			<%= recommendation.address %>
-			<%= recommendation.description %>
+			<%#= recommendation.name %>
+			<%#= recommendation.address %>
+			<%#= recommendation.description %>
 		</li>
-	<% end %>
+	<%# end %>
 
 	</ul>
 
 	<ul>
-		<% @booking.flat.contacts.each do |contact| %>
+		<%# @booking.flat.contacts.each do |contact| %>
 
 		<li>
-		<%= contact.phone_number %>
-		<%= contact.address %>
-		<%= contact.description %>
-	<% end %>
+		<%#= contact.phone_number %>
+		<%#= contact.address %>
+		<%#= contact.description %>
+	<%# end %>
 	</ul>
 
+</div> -->
+<!-- OLD SHOW -->
+
+
+<div class="container">
+  <div class="row py-4">
+    <div class="col-md-3"><%= image_tag @booking.flat.photos[0], width: '100%' %></div>
+    <div class="col">
+      <h1>booking #<%= @booking.id %> <small><span class="badge badge-primary"><%= @booking.status %></span></small></h1>
+      <ul class="list-unstyled">
+        <li><strong>ISSUED ON</strong> <%= @booking.created_at.to_date %></li>
+        <li><strong>flat</strong> <%= @booking.flat.title %> [<%= @booking.id %>]</li>
+        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @booking.amount %></li>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
