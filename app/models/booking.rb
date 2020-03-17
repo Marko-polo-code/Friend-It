@@ -13,6 +13,9 @@ class Booking < ApplicationRecord
 
   before_validation :set_total_price, on: :create
 
+  monetize :amount_cents
+
+
   def set_total_price
     self.status = "pending"
     self.total_price = ((self.end_date - self.start_date).to_i + 1)* self.flat.price

@@ -18,6 +18,9 @@ class Flat < ApplicationRecord
   accepts_nested_attributes_for :flat_perks
 
 
+
+  monetize :price_cents
+
   include PgSearch::Model
   pg_search_scope :search_by_address_and_owner,
     against: [ :address ],
