@@ -96,12 +96,12 @@ i.right {
 }
 .flat-title {
   text-decoration: none;
-  color: orange;
+  color: #FAC109;
 }
 
 .flat-title:hover {
   text-decoration: none;
-  color: orange;
+  color: #FAC109;
 }
 
 .box-flat-title:hover {
@@ -111,14 +111,14 @@ i.right {
 
 .h3 {
   text-decoration: none !important;
-  color: orange;
+  color: #FAC109;
   font-size: 20px;
 
 }
 
 .mb-text {
   text-decoration: none !important;
-  color: orange;
+  color: #FAC109;
 }
 
 .mb-text:hover {
@@ -158,3 +158,17 @@ a {
   object-fit: cover;
 }
 
+.link-devise {
+  font-size: 20px;
+  margin-left: 150px;
+}
+
+.fa-home:before {
+  margin-right: 30px;
+  color: #2D96F3;
+}
+
+.fa-map-marked-alt:before {
+  color: #2D96F3;
+  font-size: 20px;
+}

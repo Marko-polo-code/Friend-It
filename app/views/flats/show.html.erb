@@ -6,7 +6,14 @@
   <div class="row">
      <div class="col-8">
       <% if @flat.photos.first %>
-          <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400, crop: :fill, class: "card-img-top hoverable" %>
+        <div class="small-image-container">
+          <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable" %>
+          <div class="row align-items-center">
+          <% @flat.photos[1..-1].each do |photo| %>
+            <%= cl_image_tag photo.key, class: "materialboxed image-thumb" %>
+            <% end %>
+          </div>
+      </div>
         <% end %>
         <h3><%= @flat.title %></h3>
         <p><%= @flat.description %></p>

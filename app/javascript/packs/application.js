@@ -1,6 +1,6 @@
 import "bootstrap";
 import flatpickr from "flatpickr";
-import 'mapbox-gl/dist/mapbox-gl.css';
+
 import 'select2/dist/css/select2.css';
 import { initFlatpickr } from '../plugins/init_flatpickr';
 import { initSwapFlatpickr } from '../plugins/init_swapflatpickr';

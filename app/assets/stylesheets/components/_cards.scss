@@ -6,3 +6,25 @@
 .card-panel {
   border-radius: 16px;
 }
+
+.card {
+  border-radius: 16px;
+}
+
+
+.card .card-image img {
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+
+}
+
+.card .card-content .card-title {
+  color: #3C3744;
+}
+
+.image-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  background-position: center;
+}

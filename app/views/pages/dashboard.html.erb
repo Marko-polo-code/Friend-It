@@ -31,13 +31,14 @@
            <% end %>
         </div>
         <div class="card-content">
-          <div class="card-title activator"><%= booking.flat.title %><i class="arrow"></i></div>
+          <div class="card-title activator"><i class="fas fa-home"></i><h5><%= booking.flat.title %><i class="arrow"><h5></i></div>
            <% if booking.flat.user.photo.attached? %>
             <%= cl_image_tag booking.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
             <% else %>
+              <br>
               <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
             <% end %>
-          <p><%= booking.flat.user.first_name %>- <%= booking.flat.user.last_name%></p>
+          <p><%= booking.flat.user.first_name %> <%= booking.flat.user.last_name%></p>
             <% unless booking.status == "rejected" %>
         </div>
             <div class="card-reveal">
