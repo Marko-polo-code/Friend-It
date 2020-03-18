@@ -17,8 +17,10 @@ class Booking < ApplicationRecord
 
 
   def set_total_price
-    self.status = "pending"
-    self.total_price = ((self.end_date - self.start_date).to_i + 1)* self.flat.price
+    if self.swap_request_id.nil?
+      self.status = "pending"
+      self.total_price = ((self.end_date - self.start_date).to_i + 1)* self.flat.price
+    end
   end
 
   def end_date_after_start_date

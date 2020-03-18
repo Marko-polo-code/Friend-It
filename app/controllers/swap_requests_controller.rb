@@ -28,7 +28,8 @@ class SwapRequestsController < ApplicationController
                           flat: swap_request.requested_flat,
                           user: swap_request.requester_flat.user,
                           total_price: 0,
-                          number_of_guests: 1
+                          number_of_guests: 1,
+                          swap_request: swap_request
                           )
                           raise unless booking_one.save
 
@@ -38,11 +39,12 @@ class SwapRequestsController < ApplicationController
                           flat: swap_request.requester_flat,
                           user: swap_request.requested_flat.user,
                           total_price: 0,
-                          number_of_guests: 1
+                          number_of_guests: 1,
+                          swap_request: swap_request
                           )
                           raise unless booking_two.save
 
-                          swap_request.destroy
+                          # swap_request.destroy
     redirect_to admin_dashboard_path, notice: "Swap Accepted"
   end
 

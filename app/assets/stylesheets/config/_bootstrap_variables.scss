@@ -24,10 +24,7 @@ $border-radius-sm: 2px;
 
 // Override other variables below!
 
-body {
-  min-height: 100vh;
-}
 
 .body-container {
-  min-height: calc(100vh - 171px);
+  min-height: calc(100vh - 100px) ;
 }

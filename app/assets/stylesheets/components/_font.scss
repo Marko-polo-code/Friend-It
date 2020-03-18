@@ -172,3 +172,11 @@ a {
   color: #2D96F3;
   font-size: 20px;
 }
+
+ul:not(.browser-default)>li {
+  font-size: 18px;
+}
+
+.tab-content {
+  min-height: 60vh;
+}
