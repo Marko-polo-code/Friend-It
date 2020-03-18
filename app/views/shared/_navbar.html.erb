@@ -1,7 +1,7 @@
 <% if controller_name == "pages" && action_name == "welcome" %>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon transparent-background">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon transparent-background fixed-top">
 <% else %>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
 <% end %>
   <%= link_to (image_tag("https://res.cloudinary.com/dncij7vr6/image/upload/v1584332578/LogoMakr_5ylzoP_ntpkfd.png")), flats_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,16 +9,16 @@
   </button>
 
 
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
     <form action="/flats">
     <div class="d-flex">
       <input type="text" id="search-bar" name="query" placeholder="Search...">
         <button type="submit" id="search-btn"><i class="material-icons">search</i></button>
         </div><%# <input type="submit" class="btn btn-primary-info ml-2"> %>
     </form>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
 
       <% if user_signed_in? %>
         <li class="nav-item">
