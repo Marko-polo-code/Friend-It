@@ -4,9 +4,10 @@
 }
 
 .transparent-background {
-  background: transparent;
-  position: relative;
+  background: transparent !important;
   z-index: 2;
+  color: white !important;
+  text-decoration: none;
 }
 
 .navbar-lewagon .navbar-collapse {

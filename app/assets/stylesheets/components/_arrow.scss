@@ -43,6 +43,7 @@
 .arrow2:before {
   position: absolute;
   left: 75%;
+  
 }
 .arrow2 {
   width: 16px;
@@ -54,7 +55,10 @@
   border-top: none;
   border-right: 2px #2D96F3 solid;
   border-bottom: 2px #2D96F3 solid;
+  margin-top: 30px;
+  margin-left: 30px;
 }
+
 .arrow2:before {
   content: '';
   width: 14px;
@@ -77,4 +81,9 @@
   100% {
     opacity: 1;
   }
+}
+
+.card .card-content .card-title i {
+  margin-top: 30px;
+  margin-left: 30px;
 }

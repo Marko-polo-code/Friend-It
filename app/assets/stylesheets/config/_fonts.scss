@@ -25,6 +25,7 @@ h1, h2, h4, h5, h6 {
 p {
   letter-spacing: -0.5px;
   margin-top: 25px !important;
+  color: #3C3744;
 }
 
 .flatpickr-current-month select {
@@ -37,6 +38,27 @@ h3 {
   color:#F2A659;
 }
 
-.body-container {
-  margin-top: 40px;
+.filler {
+  margin-top: 110px;
+}
+
+span, a {
+  color: #3C3744;
+}
+
+.list-group-horizontal .list-group-item + .list-group-item {
+  color: #3C3744;
+}
+.list-group-horizontal .list-group-item:first-child {
+  color: #3C3744;
+
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #3C3744 !important;
+
+}
+
+.card-img, .card-img-top {
+  margin-bottom: 30px;
 }

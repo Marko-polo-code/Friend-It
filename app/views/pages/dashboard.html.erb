@@ -1,3 +1,4 @@
+<div class="filler"></div>
 <p>User Dashboard</p>
 
     <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
@@ -22,11 +23,11 @@
           <div class="row">
           <%@made_bookings.each do |booking|%>
 
-        <div class="col-4">
+        <div class="col s12 m6">
           <div class="card hoverable">
            <div class="card-image waves-effect waves-block waves-light">
            <% if booking.flat.photos.first %>
-             <%= cl_image_tag booking.flat.photos.first.key, height: 300, width: 300, crop: :fill,  class: "card-img-top hoverable" %>
+             <%= cl_image_tag booking.flat.photos.first.key, height: 250, width: 250, crop: :fill,  class: "card-img-top hoverable" %>
            <% end %>
         </div>
         <div class="card-content">
@@ -63,7 +64,7 @@
       <div class="container-fluid">
         <div class="row">
         <% @sent_requests.each do |request| %>
-          <div class="col-4">
+          <div class="col s12 m6">
             <div class="card">
               <% if request.status == "pending" %>
                 <div class="card-image waves-effect waves-block waves-light">
@@ -98,7 +99,7 @@
       <div class="container-fluid">
         <div class="row">
         <% @sent_requests.each do |request| %>
-          <div class="col-4">
+          <div class="col s12 m6">
             <div class="card">
               <% if request.status != "pending" %>
                 <div class="card-image waves-effect waves-block waves-light">
