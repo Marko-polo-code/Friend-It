@@ -35,7 +35,7 @@
             <% end %>
             </div>
               <div class="card-content">
-                <span class="card-title activator"><%= booking.flat.title %><i class="material-icons right">add</i></span>
+                <div class="card-title activator"><%= booking.flat.title %><i class="arrow"></i></div>
                 <% if booking.flat.user.photo.attached? %>
                 <%= cl_image_tag booking.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
                 <% else %>
@@ -47,7 +47,7 @@
                 <p> <%= booking.start_date %> </p>
                 <p> <%= booking.end_date %> </p>
                 <p>$<%= booking.flat.price %> </p>
-                <span class="card-title grey-text text-darken-4"><i class="material-icons">expand_less</i></span>
+                <span class="card-title grey-text text-darken-4"><i class="arrow2"></i></span>
               </div>
           </div>
 

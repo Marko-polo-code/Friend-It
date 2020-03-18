@@ -125,3 +125,30 @@ i.right {
   transform: translateY(-3px);
   transition: all 0.5s ease ;
 }
+
+.fa-check-square:before {
+  color: #2D96F3;
+  margin-right: 8px;;
+
+}
+
+#index-price {
+  padding-top: 0px;
+}
+
+.lined .nav-link {
+  color: #2D96F3;
+}
+
+a {
+  text-decoration: none !important;
+  color: #2D96F3;
+}
+
+.friend-card-right h3 {
+  font-size: 20px !important;
+}
+
+.friend-card-wrapper {
+  border-radius: 16px;
+}

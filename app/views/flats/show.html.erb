@@ -14,7 +14,7 @@
         <% if @flat.swappable %>
           This flat is swappable
         </span>
-        <%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-primary"%>
+        <%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-ghost"%>
         <% else %>
           This flat is not swappable
           </span>
@@ -38,20 +38,22 @@
         <li class="list-group-item"><i class="fas fa-person-booth"></i>Number of beds: <%= @flat.number_of_beds %></li>
 
       </ul>
+
+      <br>
+      <br>
    
   <div class="container">
     <div class="row">
-      <div class="col-6">
-        <div class="card-panel">
+      <div class="col-md-6 mx-auto">
+        <div class="card-panel" id="perk-card">
       <% @flat.perks.each do |perk| %>
-      <span><i class="fas fa-check"></i><%= perk.name %></span>
+      <p><i class="far fa-check-square"></i><%= perk.name %></p>
       <% end %>
       </div>
     </div>
   </div>
 </div>
 
-      <br>
       <br>
 
       </div>
@@ -66,7 +68,7 @@
                 <%= f.input :start_date, as: :string, type: :text %>
                 <%= f.input :end_date, as: :string, type: :text %>
                 <%= f.input :number_of_guests %>
-                <%= f.submit "Book", class: "btn btn-primary" %>
+                <%= f.submit "Book", class: "btn btn-ghost" %>
               <% end %>
             <% end %>
         </div>
@@ -74,18 +76,18 @@
     </div>
 
 
-        <%= link_to "Back", flats_path, class: "btn btn-primary" %></p>
+        <%= link_to "Back", flats_path, class: "btn btn-ghost" %></p>
 
         <% if @flat.user == current_user %>
-          <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-primary" %>
+          <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-ghost" %>
         <% end %>
 
         <% if @flat.user == current_user %>
-          <%= link_to "Add a Recommendation", new_flat_recommendation_path(@flat), class: "btn btn-primary" %>
+          <%= link_to "Add a Recommendation", new_flat_recommendation_path(@flat), class: "btn btn-ghost" %>
         <% end %>
 
         <% if @flat.user == current_user %>
-          <%= link_to "Add a Contact", new_flat_contact_path(@flat) , class: "btn btn-primary"%>
+          <%= link_to "Add a Contact", new_flat_contact_path(@flat) , class: "btn btn-ghost"%>
         <% end %>
 
 </div>

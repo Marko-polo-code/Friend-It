@@ -29,6 +29,8 @@
   &.show {
     visibility: visible;
     opacity: 1;
+    width: 40px;
+    height: 40px;
   }
 
   &.hide {
@@ -124,4 +126,8 @@
 .btn-gradient:hover {
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
+}
+
+.btn-ghost {
+  border-color: #2D96F3;
 }
