@@ -1,21 +1,21 @@
 .mailbox {
- border: 2px solid $coolblack;
+ border: 2px solid $coolblue;
  border-radius: 8px;
  padding: 16px;
 }
 
 .contacts {
-  border: 2px solid $coolyellow;
+  border: 2px solid $coolblue;
 }
 
 .mb-title {
-  border-bottom: 2px solid $coolyellow;
+  border-bottom: 2px solid $coolblue;
   color: $coolblack;
   padding-bottom: 10px;
 }
 
 .item {
-  border-bottom: 2px solid $coolyellow;
+  border-bottom: 2px solid $coolblue;
   padding-bottom: 10px;
   padding: 16px;
 }
@@ -34,7 +34,7 @@
 }
 .item:hover {
   background-color: rgba(242, 166, 90, .1);
-  opacity: 80%;
+  opacity: 70%;
   text-decoration: none !important;
 }
 
