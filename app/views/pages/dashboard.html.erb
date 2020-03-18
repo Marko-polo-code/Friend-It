@@ -46,8 +46,8 @@
                 <br>
                 <p><i class="fas fa-dollar-sign"></i><%= booking.flat.price %> </p>
                 <br>
-              <span class="card-title grey-text text-darken-4"><i class="material-icons right">expand_less</i></span>
-              <%= link_to "Discover", flat_info_path(booking.flat), class: "btn btn-primary" %>
+              <div class="card-title grey-text text-darken-4"><i class="arrow2"></i></div>
+              <%= link_to "Discover", flat_info_path(booking.flat), class: "btn btn-ghost" %>
            </div>
           <% end %>
         </div>
@@ -72,7 +72,7 @@
                 <% end %>
                 </div>
                 <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"><%=request.requested_flat.title %><i class="material-icons right">more_vert</i></span>
+                  <div class="card-title activator grey-text text-darken-4"><%=request.requested_flat.title %><i class="material-icons right">more_vert</i></div>
                   <% if request.flat.user.photo.attached? %>
                   <%= cl_image_tag request.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
                   <% else %>
@@ -80,7 +80,7 @@
                 <% end %>
                 </div>
                 <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"><%=request.requested_flat.title %><i class="material-icons right">close</i></span>
+                  <div class="card-title grey-text text-darken-4"><%=request.requested_flat.title %><i class="material-icons right">close</i></div>
                   <p><%= request.requested_flat.description%></p>
                   <span><%= request.requested_flat.user.first_name%> <%= request.requested_flat.user.last_name %><span>
                   <p><%= request.status %></p>

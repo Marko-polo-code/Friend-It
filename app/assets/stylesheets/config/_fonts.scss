@@ -17,14 +17,26 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 // $my-font: "Font Name";
 
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h4, h5, h6 {
   letter-spacing: 2px;
   font-weight: 500;
 }
 
 p {
   letter-spacing: -0.5px;
+  margin-top: 25px !important;
 }
+
 .flatpickr-current-month select {
   display: inline-block !important;
+}
+
+h3 {
+  letter-spacing: 2px;
+  font-weight: 500;
+  color:#F2A659;
+}
+
+.body-container {
+  margin-top: 40px;
 }

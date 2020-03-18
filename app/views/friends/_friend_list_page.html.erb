@@ -46,7 +46,7 @@
 
         <!-- avatar and name -->
         <div class="row friend-card-wrapper">
-          <div class="col-md-4 friend-card-left">
+          <div class="col-md-3 friend-card-left">
             <h3><%= user.first_name %> <%= user.last_name %></h3>
             <% if user.photo.attached? %>
               <%= cl_image_tag user.photo.key, class:"card-trip-user avatar-bordered" %>
@@ -58,7 +58,7 @@
 
 
           <!-- mutual friends box -->
-          <div class="col-md-4 friend-card-center">
+          <div class="col-md-3 friend-card-center">
             <a class="h3" href="" data-toggle="modal" data-target="#exampleModal">Mutual friends</a>
             <div>
               <% current_user.common_friends(user).each do |common_friend| %>
@@ -79,7 +79,7 @@
                 <p style="opacity: 0.6">Accepted</p>
                 <% else %>
                 <div class="button-wrapper">
-                  <%= link_to "FriendIt", add_friends_path(user), method: :post, class: "btn btn-primary", style:"font-size: 12px; margin-top: 10px;" %>
+                  <%= link_to "FriendIt", add_friends_path(user), method: :post, class: "btn btn-ghost", style:"font-size: 12px; margin-top: 10px;" %>
                 </div>
               <% end %>
             </div>
@@ -91,13 +91,13 @@
         <!-- available flats, third columb of card -->
 
 
-          <div class="col-md-4 friend-card-right">
+          <div class="col-md-6 friend-card-right">
             <h3>Available flats</h3>
             <% if user.flats.empty? %>
               <p>This user has made no flat available</p>
             <% else %>
               <% user.flats.each do |flat| %>
-                <%= link_to flat.title, flat_path(flat), class: "btn btn-ghost", style: "text-transform: capitalize; font-size: 10px; margin: 3px;" %>
+                <%= link_to flat.title, flat_path(flat), style: "text-transform: capitalize; font-size: 15px; margin: 3px;" %>
               <% end %>
             <% end %>
           </div>
