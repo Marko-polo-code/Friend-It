@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     rental_period = booking.end_date - booking.start_date
     booking.amount = flat.price*rental_period
     booking.save
-    booking.update(status: 'pending')
+    # booking.update(status: 'pending')
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
