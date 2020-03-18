@@ -1,10 +1,12 @@
 export function toggleMap() {
-  const toggler = document.querySelector(".map-toggler")
+  const togglers = document.querySelectorAll(".map-toggler")
   const map = document.querySelector("#map")
 
- if (toggler) {
-   toggler.addEventListener('click', e => {
-     map.classList.toggle("d-none")
+ if (togglers.length) {
+   togglers.forEach(toggler => {
+    toggler.addEventListener('click', e => {
+      map.classList.toggle("d-none")
+    })  
    })
  }
 }
