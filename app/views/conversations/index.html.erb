@@ -1,8 +1,6 @@
 
 <div class="filler"></div>
 
-
-
 <div class="container mailbox">
  <h3 class="mb-title">Mailbox</h3>
  <div class="contacts">
@@ -17,6 +15,7 @@
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
          <div class="d-flex mb-decoration">
+          <%#= user.avatar %>
           <p class="sender-name"><%= recipient.first_name %></p>
           <div class="mb-text"><%= conversation.messages.last.body.truncate(35).capitalize %></div>
         </div>
