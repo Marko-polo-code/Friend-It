@@ -14,9 +14,10 @@
         <% else %>
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-         <div class="d-flex mb-decoration">
-          <%#= user.avatar %>
-          <p class="sender-name"><%= recipient.first_name %></p>
+        
+         <div class="d-flex align-items-center mb-decoration">
+          <p class="sender-name my-0"><%= recipient.first_name %></p>
+
           <div class="mb-text"><%= conversation.messages.last.body.truncate(35).capitalize %></div>
         </div>
        <% end %>
@@ -33,7 +34,12 @@
    <% @users.each do |user| %>
       <% if user.id != current_user.id %>
        <div class="item">
-      <%#= user.avatar %> <%= user.first_name %> <%= link_to 'Message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-ghost"%> -->
+        <% if user.photo.attached? %>
+          <%= cl_image_tag user.photo.key, class: "avatar" %>
+        <% else %>
+          <%= image_tag "logo.png", alt: "avatar", class: "avatar" %>
+        <% end %>
+          <p class="d-inline-block user-name"><%= user.first_name %></p> <%= link_to 'Message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-ghost"%>
         </div>
     <% end %>
  <% end %>
