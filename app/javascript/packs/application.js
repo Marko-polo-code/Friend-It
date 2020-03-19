@@ -21,4 +21,4 @@ initScrollFunc();
 initSelect2();
 toggleMap();
 scrollBar();
-iniType();
+// iniType();
