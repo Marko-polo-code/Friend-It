@@ -1,8 +1,5 @@
 <div class="filler"></div>
 
-
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto">
@@ -14,30 +11,39 @@
 
 
 
-          <%= f.input :email,
-                        label: false,
+       <%= f.input :email, 
+                        label: false, wrapper_html: { class: 'fa fa-user' },
+                        placeholder: "Email",
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "email" }%>
             
 
-            <%= f.input :first_name,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "f-name" }%>
-              
+        <%= f.input :first_name,
+                    label: false, wrapper_html: { class: 'fa fa-user' },
+                    placeholder: "First Name",
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "f-name" }%>
+          
 
         <%= f.input :last_name,
+                    label: false, wrapper_html: { class: 'fa fa-user' },
+                    placeholder: "Last Name",
                     required: true,
                     autofocus: true,
                     input_html: { autocomplete: "l-name" }%>
           
         <%= f.input :password,
+                    label: false, wrapper_html: { class: 'fa fa-user' },
+                    placeholder: "Password",
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                     input_html: { autocomplete: "new-password" } %>
 
         <%= f.input :password_confirmation,
+                    label: false, wrapper_html: { class: 'fa fa-user' },
+                    placeholder: "Repeat Password",
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
           

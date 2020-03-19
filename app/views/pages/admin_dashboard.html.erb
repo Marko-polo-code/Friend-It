@@ -17,40 +17,40 @@
     <a id="contact3-tab" data-toggle="tab" href="#contact3" role="tab" aria-controls="contact3"
       aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0">Swap Request</a>
   </li>
-
-
 </ul>
-    <div id="myTab2Content" class="tab-content">
-      <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
 
-      <div class="container-fluid ">
-          <div class="row">
-        <% @received_bookings.each do |booking|  %>
+<div id="myTab2Content" class="tab-content">
+  <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
 
-        <div class="col s12 m6">
-          <div class="card hoverable">
-           <div class="card-image waves-effect waves-block waves-light">
-            <% if booking.flat.photos.first %>
-             <%= cl_image_tag booking.flat.photos.first.key,  height: 250, width: 250, crop: :fill, class: "card-img-top hoverable" %>
-            <% end %>
-            </div>
+    <div class="container-fluid ">
+        <div class="row">
+          <% @received_bookings.each do |booking|  %>
+
+            <div class="col s12 m6">
+              <div class="card hoverable">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <% if booking.flat.photos.first %>
+                  <%= cl_image_tag booking.flat.photos.first.key,  height: 250, width: 250, crop: :fill, class: "card-img-top hoverable" %>
+                  <% end %>
+              </div>
               <div class="card-content">
                 <div class="card-title activator"><i class="fas fa-home"></i><h5><%= booking.flat.title %><i class="arrow"></h5></i></div>
-                <% if booking.flat.user.photo.attached? %>
-                <%= cl_image_tag booking.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
-                <% else %>
-                  <br>
-                  <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
-                <% end %>
-                 <p><%= booking.flat.user.first_name %> <%= booking.flat.user.last_name%></p>
-              </div>
-                <div class="card-reveal">
-                  <p><%booking.status%></p>
-                  <p><p><strong>From:</strong><br><br><%= booking.start_date %> </p>
-                  <p><p><strong>To:</strong><br><br><%= booking.end_date %> </p>
-                  <p><i class="fas fa-dollar-sign"></i><%= booking.flat.price %> </p>
-                  <span class="card-title grey-text text-darken-4"><i class="arrow2"></i></span>
-               </div>
+                  <% if booking.flat.user.photo.attached? %>
+                  <%= cl_image_tag booking.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                  <% else %>
+                    <br>
+                    <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+                  <% end %>
+                  <p><%= booking.flat.user.first_name %> <%= booking.flat.user.last_name%></p>
+                </div>
+                  <div class="card-reveal">
+                    <p><%booking.status%></p>
+                    <p><p><strong>From:</strong><br><br><%= booking.start_date %> </p>
+                    <p><p><strong>To:</strong><br><br><%= booking.end_date %> </p>
+                    <p><i class="fas fa-dollar-sign"></i><%= booking.flat.price %> </p>
+                    <span class="card-title grey-text text-darken-4"><i class="arrow2"></i></span>
+                  </div>
+
               <% unless booking.status == "accepted" || booking.status == "rejected" %>
                 <%= link_to 'accept', booking_accept_path(booking), class: "btn btn-ghost", method: :put %>
                 <br>
@@ -64,11 +64,10 @@
                 <% end %>
                 <% booking.flat.contacts.each do |contact| %>
                 <%= link_to "Edit Contact", edit_contact_path(contact), class: "btn btn-ghost" %>
-                <% end %>
-            <% end %>
+              <% end %>
             </div>
           </div>
-      </div>
+          <% end %>
     </div>
   </div>
 
