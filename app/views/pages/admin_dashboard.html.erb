@@ -1,5 +1,4 @@
 <div class="filler"></div>
-  <p>Admin Dashboard</p>
 
 <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
 
@@ -30,7 +29,7 @@
               </div>
               <div class="card-content">
                 <% if booking.swap_request %>
-                  <div class="card-title activator"><i class="fas fa-home"></i><h5><%= booking.swap_request.requester_flat.title %><i class="arrow"></h5></i></div>
+                  <div class="card-title activator"><i class="fas fa-home"></i><h5><strong><%= booking.swap_request.requester_flat.title %><i class="arrow"></strong></h5></i></div>
                 <% else %>
                 <div class="card-title activator"><i class="fas fa-home"></i><h5><%= booking.flat.title %><i class="arrow"></h5></i></div>
                 <% end %>
@@ -83,7 +82,8 @@
                 <% end %>
                 </div>
                   <div class="card-content">
-                    <h5><%= request.requester_flat.user.first_name%><br>wants to trade: <br><i class="fas fa-home"></i><%= link_to request.requester_flat.title, flat_path(request.requester_flat) %></h5>
+                    <h5><strong><%= request.requester_flat.user.first_name%></strong></h5><h5><strong><br>Would like to trade: <br></strong></h5><p><%= link_to request.requester_flat.title, flat_path(request.requester_flat)%></p>
+                    <br>
                     <% unless request.status == "accepted" || request.status == "rejected" %>
                      <% if request.requester_flat.user.photo.attached? %>
                       <%= cl_image_tag request.requester_flat.user.photo.key, class: "card-trip-user avatar-bordered" %>

@@ -10,6 +10,7 @@ import { initScrollFunc } from '../plugins/init_scroll_up_button';
 import { initSelect2 } from '../plugins/init_select2';
 import { toggleMap } from '../dom/map_toggle.js';
 import { scrollBar } from '../plugins/init_scrollbar';
+import { iniType } from '../plugins/init_type';
 
 
 initFlatpickr();
@@ -20,3 +21,4 @@ initScrollFunc();
 initSelect2();
 toggleMap();
 scrollBar();
+iniType();
