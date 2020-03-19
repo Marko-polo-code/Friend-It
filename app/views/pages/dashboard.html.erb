@@ -1,8 +1,7 @@
 <div class="filler"></div>
 
   <div class="caption center-align" >
-    <h5>Welcome Back</h5>
-    <h5><%= current_user.first_name %></h5>
+    <h5 class="d-inline" id="welcome" data-name="<%= current_user.first_name %>"></h5>
   </div>
 
 
@@ -15,7 +14,7 @@
           <a id="contact3-tab" data-toggle="tab" href="#contact3" role="tab" aria-controls="contact3"
             aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0">Swap Request</a>
         </li>
-    </ul>
+     </ul>
 
     <div id="myTab2Content" class="tab-content">
       <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
@@ -32,7 +31,8 @@
            <% end %>
         </div>
           <div class="card-content">
-            <div class="card-title activator"><i class="fas fa-home"></i><h5><%= booking.flat.title %><i class="arrow"><h5></i></div>
+            <div class="card-title activator"><br><i class="fas fa-home"></i><h5><strong><%= booking.flat.title %><i class="arrow"></strong><h5></i></div>
+              <br>
             <% if booking.flat.user.photo.attached? %>
               <%= cl_image_tag booking.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
               <% else %>
@@ -76,7 +76,8 @@
                 <% end %>
                 </div>
                 <div class="card-content">
-                  <div class="card-title activator grey-text text-darken-4"><%=request.requested_flat.title %><i class="arrow"></i></div>
+                  <div class="card-title activator grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow"></i></div>
+                    <br>
                   <% if request.requested_flat.user.photo.attached? %>
                   <%= cl_image_tag request.requested_flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
                   <% else %>
@@ -84,7 +85,7 @@
                 <% end %>
                 </div>
                 <div class="card-reveal">
-                  <div class="card-title grey-text text-darken-4"><%=request.requested_flat.title %><i class="arrow2"></i></div>
+                  <div class="card-title grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow2"></i></div>
                   <p><%= request.requested_flat.description%></p>
                   <span><strong><%= request.requested_flat.user.first_name%></strong><strong><br><%= request.requested_flat.user.last_name %></strong><span>
                   <p><p><strong>Status:</strong><br><br><%= request.status %></p>
@@ -111,11 +112,11 @@
                 <% end %>
                 </div>
                 <div class="card-content">
-                  <div class="card-title activator grey-text text-darken-4"><%=request.requested_flat.title %><a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="arrow"></i></a></div>
+                  <div class="card-title activator grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="arrow"></i></a></div>
                   <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
                 </div>
                 <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"><%=request.requested_flat.title %><i class="arrow2"></i></span>
+                  <span class="card-title grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow2"></i></span>
                   <p><%= request.requested_flat.description%></p>
                   <span><%= request.requested_flat.user.first_name%> <%= request.requested_flat.user.last_name %><span>
                   <p> <%= request.status %></p>
