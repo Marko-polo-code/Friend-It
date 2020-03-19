@@ -6,7 +6,9 @@
 
 <div class="container mailbox">
   <div class="contact">
-    <p><%= user.first_name %></p>
+    <% if @messages.length.positive? %>
+      <p><%= @messages[0].user.first_name %></p>
+    <% end %>
   </div>
   <% if @over_ten %>
    <%= link_to 'Show Previous', '?m=all' %>
