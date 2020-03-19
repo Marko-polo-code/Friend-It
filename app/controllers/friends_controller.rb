@@ -3,7 +3,7 @@ class FriendsController < ApplicationController
     if params[:query].present?
       @users = User.search_by_user(params[:query])
     else
-      @users = User.where.not(id: current_user.id)
+      @users = current_user.connections
     end
         @markers = Flat.joins(:user).where(user_id: @users.pluck(:id)).map do |flat|
       if flat.user.photo.attached?
