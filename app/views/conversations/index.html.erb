@@ -17,7 +17,7 @@
 
          <div class="d-flex align-items-center mb-decoration">
           <p><% if recipient.photo.attached? %>
-            <%= cl_image_tag user.photo.key, class: "avatar" %>
+            <%= cl_image_tag recipient.photo.key, class: "avatar" %>
           <% else %>
             <%= image_tag "logo.png", alt: "avatar", class: "avatar" %>
           <% end %>

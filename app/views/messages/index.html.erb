@@ -6,9 +6,7 @@
 
 <div class="container mailbox">
   <div class="contact">
-    <% if @messages.length.positive? %>
-      <p><%= @messages[0].user.first_name %></p>
-    <% end %>
+    <p><%= @conversation.sender == current_user ? @conversation.recipient.first_name : @conversation.sender.first_name %></p>
   </div>
   <% if @over_ten %>
    <%= link_to 'Show Previous', '?m=all' %>
