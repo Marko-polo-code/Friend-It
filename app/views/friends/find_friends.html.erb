@@ -34,6 +34,23 @@
     <%= render 'friend_list_page', friends: @users %>
     </div>
 
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <% current_user.requested_friends.each do |pf| %>
+      <%= pf.first_name %>
+      <%= pf.last_name %>
+      <% if pf.photo.attached? %>
+        <%= cl_image_tag pf.photo.key, class: "avatar" %>
+      <% else %>
+        <%= image_tag "logo.png", class: "avatar" %>
+      <% end %>
+        <%= link_to "accept", accept_friends_path(pf), method: :post %>
+        <%= link_to "decline", decline_friends_path(pf), method: :post %>
+      <% end %>
+
+    </div>
+
+
+
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
                 <% current_user.friends.each do |user| %>
