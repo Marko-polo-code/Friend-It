@@ -2,7 +2,7 @@
 <div class="filler"></div>
 
 <div class="container mailbox">
- <h3 class="mb-title">Mailbox</h3>
+ <h3 class="mb-title"><i class="far fa-envelope"></i>Mailbox</h3>
  <div class="contacts">
    <% @conversations.each do |conversation| %>
     <% unless conversation.messages.empty? %>
@@ -14,7 +14,7 @@
         <% else %>
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-        
+
          <div class="d-flex align-items-center mb-decoration">
           <p class="sender-name my-0"><%= recipient.first_name %></p>
 
@@ -29,7 +29,7 @@
 </div>
 
 <div class="container mailbox my-4">
- <h3 class="mb-title">All Users</h3>
+ <h3 class="mb-title"><i class="far fa-paper-plane"></i>All Users</h3>
   <div class="contacts">
    <% @users.each do |user| %>
       <% if user.id != current_user.id %>

@@ -1,9 +1,17 @@
+
+<div class="filler">
+
+
 <div class="container">
-  <div class="row py-4">
-    <div class="col-md-3"><%= image_tag @booking.flat.photos[0], width: '100%' %></div>
-    <div class="col">
-      <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @booking.flat.title %></strong> for <strong><%= humanized_money_with_symbol @booking.amount %></strong></p>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card-panel hoverable">
+    <%= image_tag @booking.flat.photos[0], width: '100%' %>
+      <h3>Checkout Summary:</h3>
+       <p><h5><strong>Your Purchase:</strong></h5></p>
+       <p><h6><%= @booking.flat.title %></h6></p>
+       <p><h5><strong>Price:</strong></h5></p>
+      <p><h6><%= humanized_money_with_symbol @booking.amount %></h6></p>
       <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
@@ -15,6 +23,7 @@
           });
         });
       </script>
+      </div>
     </div>
   </div>
 </div>
