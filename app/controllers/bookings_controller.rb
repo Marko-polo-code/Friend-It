@@ -22,9 +22,9 @@ class BookingsController < ApplicationController
     # booking.update(status: 'pending')
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
-      line_items: [{ 
+      line_items: [{
         name: flat.title,
-        amount: 400,
+        amount: booking.amount_cents,
         # amount: booking.amount_cents,
         currency: 'eur',
         quantity: 1
