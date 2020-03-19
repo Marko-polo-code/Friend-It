@@ -128,6 +128,19 @@
   color: white;
 }
 
-.btn-ghost {
-  border-color: #2D96F3;
+.btn-cancellation {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.btn-cancellation:hover {
+  opacity: 0.6;
+  color: white;
+  background-color: $coolred;
+  transform: translateY(-2px)
 }

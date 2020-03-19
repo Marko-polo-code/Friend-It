@@ -5,6 +5,9 @@
 <%= link_to "Return", conversations_path, class:"btn btn-ghost" %>
 
 <div class="container mailbox">
+  <div class="contact">
+    <p><%#= recipient.first_name %></p>
+  </div>
   <% if @over_ten %>
    <%= link_to 'Show Previous', '?m=all' %>
   <% end %>
