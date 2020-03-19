@@ -25,7 +25,8 @@ class BookingsController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: flat.title,
-        amount: booking.amount_cents,
+        amount: 400,
+        # amount: booking.amount_cents,
         currency: 'eur',
         quantity: 1
       }],
