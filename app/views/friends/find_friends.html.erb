@@ -5,8 +5,13 @@
  <form action="/find_friends">
     <div class="d-flex">
       <input type="text" id="searchBar" name="query" placeholder="Search Friends...">
-        <button type="submit" id="search-btn"><i class="material-icons">search</i></button>
-        </div><%# <input type="submit" class="btn btn-primary-info ml-2"> %>
+      <button type="submit" id="search-btn"><i class="material-icons">search</i></button>
+    </div><%# <input type="submit" class="btn btn-primary-info ml-2"> %>
+
+    <div class="container">
+     <p>Share this link to your friend: <%= link_to "Share this to your friends", new_user_registration_path(user: { referral_token: current_user.referral_token }) %></p>
+    </div>
+
     </form>
 <div class="container-fluid">
   <ul class="nav nav-tabs with-arrow lined  text-center nav-pills with-arrow lined flex-column flex-sm-row text-center" id="myTab" role="tablist">
