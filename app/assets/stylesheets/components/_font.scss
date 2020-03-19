@@ -96,12 +96,14 @@ i.right {
 }
 .flat-title {
   text-decoration: none;
-  color: #FAC109;
+  color: #144263;
+
 }
 
 .flat-title:hover {
   text-decoration: none;
-  color: #FAC109;
+  color: #144263;
+
 }
 
 .box-flat-title:hover {
@@ -111,14 +113,16 @@ i.right {
 
 .h3 {
   text-decoration: none !important;
-  color: #FAC109;
   font-size: 20px;
+  color: #144263;
+
 
 }
 
 .mb-text {
   text-decoration: none !important;
-  color: #FAC109;
+  color: #144263;
+
 }
 
 .mb-text:hover {
@@ -179,4 +183,9 @@ ul:not(.browser-default)>li {
 
 .tab-content {
   min-height: 60vh;
+}
+
+.fa-calendar-alt:before {
+  font-size: 20px;
+  color: #2D96F3;
 }
