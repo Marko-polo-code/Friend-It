@@ -63,7 +63,7 @@
 
     <div id="contact3" role="tabpanel" aria-labelledby="contact3-tab" class="tab-pane fade px-4 py-5">
 
-      <h3 class="text-center my-3">Pending Request</h3>
+      <h4 class="text my-3">Pending</h4>
       <div class="container-fluid">
         <div class="row">
         <% @sent_requests.each do |request| %>
@@ -98,13 +98,12 @@
           <% end %>
         </div>
       </div>
-
-    <h3 class="text-center my-3">Past Request</h3>
+    <h4 class="text my-3">Past</h4>
       <div class="container-fluid">
         <div class="row">
         <% @sent_requests.each do |request| %>
           <div class="col s12 m6">
-            <div class="card">
+            <div class="card hoverable">
               <% if request.status != "pending" %>
                 <div class="card-image waves-effect waves-block waves-light">
                  <% if request.requested_flat.photos.first %>
@@ -113,17 +112,22 @@
                 </div>
                 <div class="card-content">
                   <div class="card-title activator grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="arrow"></i></a></div>
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                  <br>
+                  <% if request.requested_flat.user.photo.attached? %>
+                  <%= cl_image_tag request.requested_flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                  <% else %>
+                  <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+                  <% end %>
                 </div>
                 <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow2"></i></span>
+                  <div class="card-title grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow2"></i></d>
                   <p><%= request.requested_flat.description%></p>
-                  <span><%= request.requested_flat.user.first_name%> <%= request.requested_flat.user.last_name %><span>
-                  <p> <%= request.status %></p>
-                  <p><%= request.requested_flat.address%></p>
+                  <span><strong><%= request.requested_flat.user.first_name%> <%= request.requested_flat.user.last_name %></strong><span>
+                  <p><p><strong>Status:<%= request.status %></p>
+                  <p><p><strong>Address:<%= request.requested_flat.address%></p>
                 </div>
-              <% end %>
             </div>
+              <% end %>
           </div>
         <% end %>
         </div>

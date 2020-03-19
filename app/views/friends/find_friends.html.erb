@@ -9,21 +9,21 @@
     </div><%# <input type="submit" class="btn btn-primary-info ml-2"> %>
 
     <div class="container">
-     <p>To add a friend, share this link: <%= link_to "Link", new_user_registration_path(user: { referral_token: current_user.referral_token }) %></p>
+     <h6 class="text-right"><strong>To add a friend, share this link:</strong> <%= link_to "Link", new_user_registration_path(user: { referral_token: current_user.referral_token }) %></h6>
     </div>
   </form>
 
 <div class="container-fluid">
   <ul class="nav nav-tabs with-arrow lined  text-center nav-pills with-arrow lined flex-column flex-sm-row text-center" id="myTab" role="tablist">
 
-    <li class="nav-item flex-sm-fill">
+    <li class="nav-item flex-sm-fill"><i class="fas fa-user-plus"></i>
       <a class="nav-link active text-uppercase font-weight-bold mr-sm-3 rounded-0 active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Add Friends</a>
 
-    <li class="nav-item flex-sm-fill">
+    <li class="nav-item flex-sm-fill"><i class="fas fa-user-clock"></i>
       <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"  class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0">Friend Request</a>
     </li>
 
-    <li class="nav-item flex-sm-fill">
+    <li class="nav-item flex-sm-fill"><i class="fas fa-users"></i>
       <a id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0">Your Friends</a>
     </li>
 
