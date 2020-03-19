@@ -16,15 +16,14 @@
         <% end %>
 
          <div class="d-flex align-items-center mb-decoration">
-          <p class="sender-name my-0"><%= recipient.first_name %></p>
-
-         <div class="d-flex mb-decoration">
-          <% if recipient.photo.attached? %>
+          <p><% if recipient.photo.attached? %>
             <%= cl_image_tag user.photo.key, class: "avatar" %>
           <% else %>
             <%= image_tag "logo.png", alt: "avatar", class: "avatar" %>
           <% end %>
-            <p class="sender-name my-0"><%= recipient.first_name %></p>
+          </p>
+         <div class="d-flex mb-decoration">
+            <p class="sender-name my-0"><%= recipient.first_name %> <%= recipient.last_name %></p>
           <div class="mb-text"><%= conversation.messages.last.body.truncate(35).capitalize %></div>
         </div>
        <% end %>
@@ -46,7 +45,7 @@
         <% else %>
           <%= image_tag "logo.png", alt: "avatar", class: "avatar" %>
         <% end %>
-          <p class="d-inline-block user-name"><%= user.first_name %></p> <%= link_to 'Message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-ghost"%>
+          <p class="d-inline-block user-name"><%= user.first_name %> <%= user.last_name %></p> <%= link_to 'Message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-ghost"%>
         </div>
     <% end %>
  <% end %>
