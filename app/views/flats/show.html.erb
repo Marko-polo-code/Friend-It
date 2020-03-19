@@ -7,7 +7,7 @@
      <div class="col-8">
       <% if @flat.photos.first %>
         <div class="small-image-container">
-          <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable" %>
+          <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable materialboxed" %>
           <div class="row align-items-center">
           <% @flat.photos[1..-1].each do |photo| %>
             <%= cl_image_tag photo.key, class: "materialboxed image-thumb" %>
@@ -15,24 +15,22 @@
           </div>
       </div>
         <% end %>
-        <h3><%= @flat.title %></h3>
-        <p><%= @flat.description %></p>
-        <p><i class="fas fa-dollar-sign"></i><%= @flat.price %></p>
+          <h3><%= @flat.title %></h3>
+        <blockquote>
+          <h5><%= @flat.description %></h5>
+        </blockquote>
+          <h5><i class="fas fa-dollar-sign"></i><%= @flat.price %></h5>
 
-        <i class="fas fa-exchange-alt"></i>
-        <span>
-        <% if @flat.swappable %>
-          This flat is swappable
-        </span>
-        <%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-ghost"%>
-        <% else %>
-          This flat is not swappable
-          </span>
-        <% end %>
-
+          <h5>
+            <i class="fas fa-exchange-alt"></i>
+            <% if @flat.swappable %>
+              This flat is swappable
+            <%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-ghost"%>
+            <% else %>
+              This flat is not swappable
+            <% end %>
+          </h5>
         <br>
-
-        <span>Owner:<%= @flat.user.first_name %></span> 
         <% if @flat.user.photo.attached? %>
           <%= cl_image_tag @flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
         <% else %>
@@ -43,18 +41,18 @@
 
       <ul class="list-group list-group-horizontal">
 
-        <li class="list-group-item"><i class="fas fa-bed"></i>Number of bedrooms: <%= @flat.number_of_bedrooms %></li>
-        <li class="list-group-item"><i class="fas fa-restroom"></i>Number of bathrooms: <%= @flat.number_of_bathrooms %></li>
-        <li class="list-group-item"><i class="fas fa-person-booth"></i>Number of beds: <%= @flat.number_of_beds %></li>
+        <li class="list-group-item"><i class="fas fa-bed"></i>Bedrooms: <%= @flat.number_of_bedrooms %></li>
+        <li class="list-group-item"><i class="fas fa-restroom"></i>Bathrooms: <%= @flat.number_of_bathrooms %></li>
+        <li class="list-group-item"><i class="fas fa-person-booth"></i>Beds: <%= @flat.number_of_beds %></li>
 
       </ul>
 
       <br>
       <br>
-   
+
   <div class="container">
     <div class="row">
-      <div class="col-md-6 mx-auto">
+      <div class="col-md-6">
         <div class="card-panel" id="perk-card">
       <% @flat.perks.each do |perk| %>
       <p><i class="far fa-check-square"></i><%= perk.name %></p>
@@ -72,15 +70,17 @@
 
 
     <div class="col-4">
+      <div class="card-panel">
       <div id='flat-booking-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
           <% if current_user.id != @flat.user_id  %>
             <%= simple_form_for([@flat, @booking]) do |f| %>
-                <%= f.input :start_date, as: :string, type: :text %>
-                <%= f.input :end_date, as: :string, type: :text %>
-                <%= f.input :number_of_guests %>
+                <%= f.input :start_date, as: :string, type: :text, label:false, wrapper_html: { class: 'far fa-calendar-alt'}, placeholder: "Start Date" %>
+                <%= f.input :end_date, as: :string, type: :text, label:false, wrapper_html: { class: 'fas fa-calendar-alt'}, placeholder: "End Date" %>
+                <%= f.input :number_of_guests, label:false, wrapper_html: { class: 'fas fa-user-friends'}, placeholder: "Number Of Guests" %>
                 <%= f.submit "Book", class: "btn btn-ghost" %>
               <% end %>
             <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
 
     <div class="col-md-12">
         <div id="map"
-        style="width: 100%; height: 100vh"        
+        style="width: 100%; height: 100vh"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>

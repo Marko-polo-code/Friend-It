@@ -9,15 +9,16 @@
           <div class="flat-card row">
             <div class="card-img-box col-sm-5">
             <% if flat.photos.first %>
-              <%= cl_image_tag flat.photos.first.key,  height: 300, width: 400, crop: :fill, class: "card-img-top hoverable" %>
+              <%= cl_image_tag flat.photos.first.key,  height: 300, width: 400, crop: :fill, class: "card-img-top hoverable materialboxed" %>
             <% end %>
             </div>
             <div class="col-sm-7 card-text-box">
               <h1 class="box-flat-title"><%= link_to flat.title, flat_path(flat), class: "flat-title" %></h1>
-              <p> <%= flat.description.truncate(150) %></p>
-              <p><i class="fas fa-map-marker-alt"></i><%= flat.address %></p>
+              <blockquote>
+                <p> <%= flat.description.truncate(150) %></p>
+                <p><i class="fas fa-map-marker-alt"></i><%= flat.address %></p>
               <div class="d-flex px-0"><p id="index-price"><i class="fas fa-dollar-sign"></i><%= flat.price%></p></div>
-
+              </blockquote>
             </div>
           </div>
        <% end %>
