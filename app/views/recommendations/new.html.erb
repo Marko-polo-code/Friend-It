@@ -1,9 +1,12 @@
+<div class="filler"></div>
+
+
 <div class="container">
   <div class="row">
 
 
     <div class="col-md-6 mx-auto">
-      <div class="card-panel">  
+      <div class="card-panel">
 
         <%= simple_form_for([@flat, @recommendation]) do |f| %>
           <%= f.input :name, label: false, wrapper_html: { class: 'fas fa-user-check'}, placeholder: "Name" %>

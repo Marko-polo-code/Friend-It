@@ -2,16 +2,17 @@
 
 
 
- <form action="/find_friends">
-    <div class="d-flex">
-      <input type="text" id="searchBar" name="query" placeholder="Search Friends...">
-      <button type="submit" id="search-btn"><i class="material-icons">search</i></button>
-    </div><%# <input type="submit" class="btn btn-primary-info ml-2"> %>
+
+  <form action="/find_friends">
+      <div class="d-flex">
+        <input type="text" id="searchBar" name="query" placeholder="Search Friends...">
+        <button type="submit" id="search-btn"><i class="material-icons">search</i></button>
+      </div><%# <input type="submit" class="btn btn-primary-info ml-2"> %>
+    </form>
 
     <div class="container">
-     <h6 class="text-right"><strong>To add a friend, share this link:</strong> <%= link_to "Link", new_user_registration_path(user: { referral_token: current_user.referral_token }) %></h6>
+      <p><h6 class="text-right"><strong>Invite</strong></h6><h6 class="text-right"><i class="fas fa-compress-arrows-alt"></i></h6><h6 class="text-right"><%= link_to "Link", new_user_registration_path(user: { referral_token: current_user.referral_token }) %></h6></p>
     </div>
-  </form>
 
 <div class="container-fluid">
   <ul class="nav nav-tabs with-arrow lined  text-center nav-pills with-arrow lined flex-column flex-sm-row text-center" id="myTab" role="tablist">
@@ -39,29 +40,23 @@
     <div class="container-fluid ">
         <div class="row">
           <% current_user.requested_friends.each do |pf| %>
-           <div class="col s12 m6">
             <div class="card hoverable">
-              <div class="card-image waves-effect waves-block waves-light">
-                <div class="card-content">
-                  <% if pf.photo.attached? %>
-                    <%= cl_image_tag pf.photo.key, class: "card-trip-user avatar-bordered" %>
-                  <% else %>
-                    <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
-                  <% end %>
-                  <p><%= pf.first_name %></p>
-                  <p><%= pf.last_name %></p>
-                    </div>
-                  </div>
-                  <%= link_to "Accept", accept_friends_path(pf), method: :post, class: "btn btn-ghost" %>
-                  <br>
-                  <%= link_to "Decline", decline_friends_path(pf), method: :post, class: "btn btn-ghost" %>
+                    <% if pf.photo.attached? %>
+                      <%= cl_image_tag pf.photo.key, width: 270, height: 200, crop: :fill, class: "card-trip-user" %>
+                    <% else %>
+                      <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user" id="user-avatar" />
+                    <% end %>
+                    <p><%= pf.first_name %></p>
+                    <p><%= pf.last_name %></p>
+                  <div class="card-action">
+                    <%= link_to "Accept", accept_friends_path(pf), method: :post, class: "btn btn-ghost" %>
+                    <%= link_to "Decline", decline_friends_path(pf), method: :post, class: "btn btn-ghost" %>
                 </div>
               </div>
           </div>
             <% end %>
         </div>
       </div>
-
     </div>
 
 
@@ -69,21 +64,26 @@
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
       <% current_user.friends.each do |user| %>
-        <div class="container d-flex friend-card-wrapper">
-          <div class="w-25">
-            <% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered" %>
-            <% else %>
-              <%= image_tag "logo.png", alt: "avatar", class: "card-trip-user avatar-bordered" %>
-            <% end %>
-            <p><%= user.first_name %></p>
-            <p><%= user.last_name %></p>
+        <div class="container-fluid">
+          <div class="row">
+              <div class="card hoverable">
+                <% if user.photo.attached? %>
+                  <%= cl_image_tag user.photo.key, width: 270, height: 200, crop: :fill, class: "card-trip-user" %>
+                    <% else %>
+                      <%= image_tag "logo.png", alt: "avatar", class: "card-trip-user" %>
+                    <% end %>
+                    <div>
+                      <span><strong><%= user.first_name %></strong></div>
+                      <span><strong><%= user.last_name %></strong></span>
+                      <p><strong><%= user.email %></strong></p>
+                    <div class="card-action">
+                      <%= link_to "Block", block_friends_path(user), method: :post, class:"btn btn-cancellation" %>
+                      <%= link_to "Remove", remove_friends_path(user), method: :post, class:"btn btn-cancellation"  %>
+                    </div>
+                    </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <%= link_to "Block", block_friends_path(user), method: :post, class:"btn btn-cancellation" %>
-              <%= link_to "Remove", remove_friends_path(user), method: :post, class:"btn btn-cancellation"  %>
-            </div>
-          </div>
         <% end %>
           </div>
         </div>
