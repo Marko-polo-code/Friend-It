@@ -20,7 +20,6 @@ class BookingsController < ApplicationController
     booking.amount = flat.price*rental_period
     booking.save
     # booking.update(status: 'pending')
-
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
