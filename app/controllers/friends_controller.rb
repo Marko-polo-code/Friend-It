@@ -36,12 +36,12 @@ class FriendsController < ApplicationController
   end
 
   def decline_friends
-    current_user.block_friend(User.find(params[:id]))
+    current_user.decline_request(User.find(params[:id]))
     redirect_to dashboard_path
   end
 
   def remove_friends
-    current_user.block_friend(User.find(params[:id]))
+    current_user.remove_friend(User.find(params[:id]))
     redirect_to dashboard_path
   end
 end
