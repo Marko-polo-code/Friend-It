@@ -1,13 +1,14 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $coolwhite;
+  text-decoration: none;
+  z-index: 400;
 }
 
 .transparent-background {
   background: transparent !important;
   z-index: 2;
   color: white !important;
-  text-decoration: none;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -47,7 +48,7 @@
 .nav-link:hover, a:hover {
   transform: translateY(-3px);
   transition: all 0.5s ease ;
-} 
+}
 
 .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
   color: rgba(0, 0, 0, 0.5);
