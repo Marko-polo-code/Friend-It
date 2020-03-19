@@ -20,11 +20,15 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+  
+  <div id="progress-bar"></div>
+  <div id="scroll-path"></div>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 
     <p class="alert"><%= alert %></p>
     <div class="body-container">
+
       <%= yield %>
     </div>
     <%= render 'shared/footer' %>

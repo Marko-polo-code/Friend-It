@@ -34,7 +34,6 @@
           <%= link_to "Messages",conversations_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
-          <span id="user">Hello - <%= current_user.first_name %></span>
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
