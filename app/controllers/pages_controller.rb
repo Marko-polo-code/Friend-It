@@ -15,11 +15,12 @@ class PagesController < ApplicationController
   end
 
   def admin_dashboard
-    @swap_requests = current_user.swap_requests
+    @swap_requests = current_user.swap_requests.where
     @flats = current_user.flats
     @received_bookings = @flats.map { |flat| flat.bookings }.flatten
-
-    @received_requests = SwapRequest.where(requested_flat: current_user.flats)
+    # raise
+    # binding.pry
+    @received_requests = SwapRequest.where(requested_flat: current_user.flats, status: "pending")
     @sent_requests = SwapRequest.where(requester_flat: current_user.flats)
   end
 end
