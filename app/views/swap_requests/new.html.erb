@@ -11,7 +11,7 @@
       <% if @flat.photos.first %>
         <div class="small-image-container">
           <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable materialboxed" %>
-          <div class="row align-items-center">
+          <div class="row align-items-center mx-auto">
           <% @flat.photos[1..-1].each do |photo| %>
             <%= cl_image_tag photo.key, class: "materialboxed image-thumb" %>
             <% end %>
@@ -76,7 +76,8 @@
            <div class="card-panel">
             <div id='flat-swap_request-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
               <%= simple_form_for([@flat, @swap_request]) do |f| %>
-              <%= f.association :requester_flat, collection: Flat.where(user: current_user) %>
+              <%= f.label :Which_flat_do_you_want_to_swap? %>
+              <%= f.association :requester_flat, collection: Flat.where(user: current_user), label:false %>
               <%= f.input :start_date, as: :string, type: :text, label:false, wrapper_html: { class: 'far fa-calendar-alt'}, placeholder: "Start Date" %>
               <%= f.input :end_date, as: :string, type: :text, label:false, wrapper_html: { class: 'fas fa-calendar-alt'}, placeholder: "End Date" %>
               <i class="fas fa-exchange-alt"></i><%= f.submit "Swap Request", class: "btn btn-ghost" %>
