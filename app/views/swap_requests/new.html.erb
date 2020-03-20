@@ -1,6 +1,7 @@
 
 
 
+
 <div class="filler"></div>
 
 
@@ -9,7 +10,7 @@
      <div class="col-8">
       <% if @flat.photos.first %>
         <div class="small-image-container">
-          <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable" %>
+          <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable materialboxed" %>
           <div class="row align-items-center">
           <% @flat.photos[1..-1].each do |photo| %>
             <%= cl_image_tag photo.key, class: "materialboxed image-thumb" %>
@@ -17,26 +18,24 @@
           </div>
       </div>
         <% end %>
-        <h3><%= @flat.title %></h3>
-        <p><%= @flat.description %></p>
-        <p><i class="fas fa-dollar-sign"></i><%= @flat.price %></p>
+          <h5><strong><%= @flat.title %></strong></h5>
+        <blockquote>
+          <p><%= @flat.description %></p>
+        </blockquote>
+          <p><strong><i class="fas fa-dollar-sign"></i><%= @flat.price %></strong></p>
 
-        <i class="fas fa-exchange-alt"></i>
-        <span>
-        <% if @flat.swappable %>
-          This flat is swappable
-        </span>
-        <%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-ghost"%>
-        <% else %>
-          This flat is not swappable
-          </span>
-        <% end %>
-
+          <h5>
+            <i class="fas fa-exchange-alt"></i>
+            <% if @flat.swappable %>
+              This flat is swappable
+            <%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-ghost"%>
+            <% else %>
+              This flat is not swappable
+            <% end %>
+          </h5>
         <br>
-
-        <span>Owner:<%= @flat.user.first_name %></span>
         <% if @flat.user.photo.attached? %>
-          <%= cl_image_tag @flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+          <%= cl_image_tag @flat.user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, radius: :max, class: "card-trip-user avatar-bordered" %>
         <% else %>
         <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
         <% end %>
@@ -45,9 +44,9 @@
 
       <ul class="list-group list-group-horizontal">
 
-        <li class="list-group-item"><i class="fas fa-bed"></i>Number of bedrooms: <%= @flat.number_of_bedrooms %></li>
-        <li class="list-group-item"><i class="fas fa-restroom"></i>Number of bathrooms: <%= @flat.number_of_bathrooms %></li>
-        <li class="list-group-item"><i class="fas fa-person-booth"></i>Number of beds: <%= @flat.number_of_beds %></li>
+        <li class="list-group-item"><i class="fas fa-bed"></i>Bedrooms: <%= @flat.number_of_bedrooms %></li>
+        <li class="list-group-item"><i class="fas fa-restroom"></i>Bathrooms: <%= @flat.number_of_bathrooms %></li>
+        <li class="list-group-item"><i class="fas fa-person-booth"></i>Beds: <%= @flat.number_of_beds %></li>
 
       </ul>
 
@@ -56,7 +55,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-6 mx-auto">
+      <div class="col-md-6">
         <div class="card-panel" id="perk-card">
       <% @flat.perks.each do |perk| %>
       <p><i class="far fa-check-square"></i><%= perk.name %></p>
@@ -73,7 +72,7 @@
 
 
 
-        <div class="col-4">
+    <div class="col-4">
            <div class="card-panel">
             <div id='flat-swap_request-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
               <%= simple_form_for([@flat, @swap_request]) do |f| %>
@@ -85,6 +84,7 @@
             </div>
         </div>
       </div>
+
     </div>
 
 
@@ -118,5 +118,29 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
   <span class="screen-reader-text">Back to top</span>
 </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
