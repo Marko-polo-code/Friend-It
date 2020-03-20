@@ -43,7 +43,7 @@
     <div class="container-fluid ">
         <div class="row">
           <% current_user.requested_friends.each do |pf| %>
-            <div class="card hoverable">
+            <div class="card hoverable col-md-4 mb-4">
                     <% if pf.photo.attached? %>
                       <%= cl_image_tag pf.photo.key, width: 270, height: 200, crop: :fill, class: "card-trip-user" %>
                     <% else %>
@@ -56,7 +56,6 @@
                     <%= link_to "Decline", decline_friends_path(pf), method: :post, class: "btn btn-ghost" %>
                 </div>
               </div>
-          </div>
             <% end %>
         </div>
       </div>
@@ -66,14 +65,14 @@
 
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
-      <% current_user.friends.each do |user| %>
         <div class="container-fluid">
           <div class="row">
-              <div class="card hoverable">
+      <% current_user.friends.each do |user| %>
+              <div class="card hoverable col-md-4 mb-4">
                 <% if user.photo.attached? %>
                   <%= cl_image_tag user.photo.key, width: 270, height: 200, crop: :fill, class: "card-trip-user" %>
                     <% else %>
-                      <%= image_tag "logo.png", alt: "avatar", class: "card-trip-user avtr" %>
+                      <%= image_tag "logo.png", alt: "avatar", class: "card-trip-user avtr p-4" %>
                     <% end %>
                     <div>
                       <span><strong><%= user.first_name %></strong></div>
@@ -84,10 +83,9 @@
                       <%= link_to "Remove", remove_friends_path(user), method: :post, class:"btn btn-cancellation"  %>
                     </div>
                     </div>
-                </div>
+        <% end %>
               </div>
             </div>
-        <% end %>
           </div>
         </div>
       </div>
