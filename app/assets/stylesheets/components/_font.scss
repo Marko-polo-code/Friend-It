@@ -212,3 +212,18 @@ ul:not(.browser-default)>li {
 .caption {
   top: 30% !important;
 }
+.form-control::placeholder {
+  font-family: "Roboto", "sans-serif";
+}
+
+.fa-bookmark:before {
+   color: #2D96F3;
+   margin-left: 15px;
+   font-size: 20px;
+}
+
+.fa-mobile-alt:before {
+   color: #2D96F3;
+   margin-left: 10px;
+   font-size: 20px;
+}

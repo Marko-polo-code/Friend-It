@@ -10,9 +10,12 @@
       </div><%# <input type="submit" class="btn btn-primary-info ml-2"> %>
     </form>
 
-    <div class="container">
-      <p><h6 class="text-right"><strong>Invite</strong></h6><h6 class="text-right"><i class="fas fa-compress-arrows-alt"></i></h6><h6 class="text-right"><%= link_to "Link", new_user_registration_path(user: { referral_token: current_user.referral_token }) %></h6></p>
-    </div>
+    <p class="text-right mr-4">
+      <%= link_to new_user_registration_path(user: { referral_token: current_user.referral_token }) do %>
+        <i class="fas fa-compress-arrows-alt"></i>
+        Share this link to invite your friends
+      <% end %>
+    </p>
 
 <div class="container-fluid">
   <ul class="nav nav-tabs with-arrow lined  text-center nav-pills with-arrow lined flex-column flex-sm-row text-center" id="myTab" role="tablist">
