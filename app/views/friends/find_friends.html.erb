@@ -47,7 +47,7 @@
                     <% if pf.photo.attached? %>
                       <%= cl_image_tag pf.photo.key, width: 270, height: 200, crop: :fill, class: "card-trip-user" %>
                     <% else %>
-                      <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user" id="user-avatar" />
+                      <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user" id="user-avatar" style="width: 270px; height: 200px" />
                     <% end %>
                     <p><%= pf.first_name %></p>
                     <p><%= pf.last_name %></p>
@@ -73,7 +73,7 @@
                 <% if user.photo.attached? %>
                   <%= cl_image_tag user.photo.key, width: 270, height: 200, crop: :fill, class: "card-trip-user" %>
                     <% else %>
-                      <%= image_tag "logo.png", alt: "avatar", class: "card-trip-user" %>
+                      <%= image_tag "logo.png", alt: "avatar", class: "card-trip-user avtr" %>
                     <% end %>
                     <div>
                       <span><strong><%= user.first_name %></strong></div>
