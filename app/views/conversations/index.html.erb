@@ -17,7 +17,7 @@
 
          <div class="d-flex align-items-center mb-decoration">
           <p><% if recipient.photo.attached? %>
-            <%= cl_image_tag recipient.photo.key, class: "avatar" %>
+            <%= cl_image_tag recipient.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, radius: :max, class: "avatar" %>
           <% else %>
             <%= image_tag "logo.png", alt: "avatar", class: "avatar" %>
           <% end %>
@@ -41,7 +41,7 @@
       <% if user.id != current_user.id %>
        <div class="item">
         <% if user.photo.attached? %>
-          <%= cl_image_tag user.photo.key, class: "avatar" %>
+          <%= cl_image_tag user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, radius: :max, class: "avatar" %>
         <% else %>
           <%= image_tag "logo.png", alt: "avatar", class: "avatar" %>
         <% end %>
