@@ -53,9 +53,9 @@
                   </div>
 
               <% unless booking.status == "accepted" || booking.status == "rejected" %>
-                <%= link_to 'accept', booking_accept_path(booking), class: "btn btn-ghost", method: :put %>
+                <%= link_to 'accept', booking_accept_path(booking), class: "btn btn-ghost mx-3", method: :put %>
                 <br>
-                <%= link_to 'reject', booking_reject_path(booking), class: "btn btn-ghost", method: :put %>
+                <%= link_to 'reject', booking_reject_path(booking), class: "btn btn-ghost mx-3", method: :put %>
                 <% else %>
 
               <% end %>
@@ -88,8 +88,8 @@
                       <% else %>
                         <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
                     <% end %>
-                      <p><%= link_to 'Accept', swap_request_accept_path(request), class: "btn btn-ghost", method: :put %></p>
-                      <p><%= link_to 'Reject', swap_request_reject_path(request), class: "btn btn-ghost", method: :put %></p>
+                      <p><%= link_to 'Accept', swap_request_accept_path(request), class: "btn btn-ghost mx-10", method: :put %></p>
+                      <p><%= link_to 'Reject', swap_request_reject_path(request), class: "btn btn-ghost mx-10", method: :put %></p>
                   <% end %>
                   </div>
                 </div>
