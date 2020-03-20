@@ -39,7 +39,16 @@
   <div class="row">
     <div class="col-md-6 mx-auto">
 			<div class="card-panel hoverable">
-			<%= image_tag "http://s3.amazonaws.com/timeinc-houseplans-v2-production/region/images/387/original/SL-1979_4C-Front.jpg?1582819957", width: '100%' %>
+        <% if @booking.flat.photos.attached? %>
+        <div class="small-image-container">
+            <%= cl_image_tag @booking.flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable materialboxed" %>
+          <div class="row align-items-center">
+              <% @booking.flat.photos[1..-1].each do |photo| %>
+              <%= cl_image_tag photo.key, class: "materialboxed image-thumb" %>
+          <% end %>
+          </div>
+        <% end %>
+        </div>
 			<br>
 			<br>
 				<h3>Booking #<%= @booking.id %> <small><span class="badge badge-ghost"><%= @booking.status.capitalize %></span></h3>
@@ -54,4 +63,5 @@
     </div>
   </div>
 </div>
+
 
