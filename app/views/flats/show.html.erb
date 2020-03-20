@@ -8,7 +8,7 @@
       <% if @flat.photos.first %>
         <div class="small-image-container">
           <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable materialboxed" %>
-          <div class="row align-items-center">
+          <div class="row align-items-center mx-auto">
           <% @flat.photos[1..-1].each do |photo| %>
             <%= cl_image_tag photo.key, class: "materialboxed image-thumb" %>
             <% end %>

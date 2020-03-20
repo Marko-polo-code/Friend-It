@@ -2,11 +2,15 @@
 <div class="filler"></div>
 
 
-<%= link_to "Return", conversations_path, class:"btn btn-ghost" %>
+
+
+<div class="container">
+  <%= link_to "Return", conversations_path, class:"btn btn-ghost" %>
+</div>
 
 <div class="container mailbox">
   <div class="contact">
-    <p><%= @conversation.sender == current_user ? @conversation.recipient.first_name : @conversation.sender.first_name %></p>
+    <h2><%= @conversation.sender == current_user ? @conversation.recipient.first_name : @conversation.sender.first_name %></h2>
   </div>
   <% if @over_ten %>
    <%= link_to 'Show Previous', '?m=all' %>
@@ -36,9 +40,9 @@
    <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
    <div>
     <% if @messages.empty? %>
-      <%= f.submit "Start conversation", class: "ui blue labeled submit icon button" %>
+      <%= f.submit "Start conversation", class: "btn btn-ghost mt-3" %>
      <% else %>
-      <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+      <%= f.submit "Add Reply", class: "btn btn-ghost mt-3" %>
     <% end %>
    </div>
   <% end %>

@@ -23,7 +23,7 @@
           <div class="row">
           <%@made_bookings.each do |booking|%>
 
-        <div class="col s12 m6">
+        <div class="col-lg-3 col-md-6 col-sm-12">
           <div class="card hoverable">
            <div class="card-image waves-effect waves-block waves-light">
            <% if booking.flat.photos.first %>
@@ -67,7 +67,7 @@
       <div class="container-fluid">
         <div class="row">
         <% @sent_requests.each do |request| %>
-          <div class="col s12 m6">
+          <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="card hoverable">
               <% if request.status == "pending" %>
                 <div class="card-image waves-effect waves-block waves-light">
