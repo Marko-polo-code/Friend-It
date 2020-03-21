@@ -1,0 +1,29 @@
+#search-bar {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  font-size: 16px;
+  padding: 8px 16px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+#search-bar:focus {
+  border-bottom: 1px solid teal;
+}
+
+#search-btn i {
+  color: #2D96F3;
+}
+
+.d-flex {
+  padding-right: 20px;
+}
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  margin-top: 20px;
+}
+
+// margin-top
+
+// position relative

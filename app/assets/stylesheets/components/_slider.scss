@@ -1,0 +1,18 @@
+.list-group-horizontal .list-group-item + .list-group-item  {
+  border-radius: 16px;
+  margin-left: 5px;
+}
+
+.list-group-horizontal .list-group-item:first-child {
+  border-radius: 16px;
+  margin-right: 5px;
+}
+
+.slider {
+  z-index: 1;
+  height: 100vh !important;
+}
+
+.slider {
+  height: 100vh !important;
+}

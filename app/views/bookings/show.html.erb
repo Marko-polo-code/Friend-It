@@ -1,0 +1,67 @@
+<!-- OLD SHOW -->
+
+<!-- <div class="container">
+
+	<p>Your Booking is:<%= @booking.status %> </p>
+	<p>Start Date:<%= @booking.start_date %> </p>
+	<p>End Date:<%= @booking.end_date %> </p>
+	<p>Price:<%= @booking.total_price %> </p>
+	<p>Owner:<%= @booking.user.email %></p>
+
+	<ul>
+	<%# @booking.flat.recommendations.each do |recommendation| %>
+
+		<li>
+			<%#= recommendation.name %>
+			<%#= recommendation.address %>
+			<%#= recommendation.description %>
+		</li>
+	<%# end %>
+
+	</ul>
+
+	<ul>
+		<%# @booking.flat.contacts.each do |contact| %>
+
+		<li>
+		<%#= contact.phone_number %>
+		<%#= contact.address %>
+		<%#= contact.description %>
+	<%# end %>
+	</ul>
+
+</div> -->
+<!-- OLD SHOW -->
+
+<div class="filler"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+			<div class="card-panel hoverable">
+        <% if @booking.flat.photos.attached? %>
+        <div class="small-image-container">
+            <%= cl_image_tag @booking.flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable materialboxed" %>
+          <div class="row align-items-center">
+              <% @booking.flat.photos[1..-1].each do |photo| %>
+              <%= cl_image_tag photo.key, class: "materialboxed image-thumb" %>
+          <% end %>
+          </div>
+        <% end %>
+        </div>
+			<br>
+			<br>
+				<h3>Booking #<%= @booking.id %> <small><span class="badge badge-ghost"><%= @booking.status.capitalize %></span></h3>
+				<br>
+					<p><h5><strong>Issued On:</strong></h5></p>
+          <p><h6><%= @booking.created_at.to_date %></h6></p>
+					<p><h5><strong>Flat:</strong></h5></p>
+          <p><h6><%= @booking.flat.title %> [<%= @booking.id %>]</h6></p>
+					<p><h5><strong>Total:</strong></h5></p>
+          <p><h6><%= humanized_money_with_symbol @booking.amount %><strong></h6></p>
+			</div>
+    </div>
+  </div>
+</div>
+
+

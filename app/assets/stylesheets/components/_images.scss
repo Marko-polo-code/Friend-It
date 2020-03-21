@@ -1,0 +1,20 @@
+.card-img, .card-img-top {
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+
+.image-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  background-position: center;
+  margin-right: 20px;
+  border-radius: 16px;
+}
+
+img {
+  // border-radius: 16px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+}

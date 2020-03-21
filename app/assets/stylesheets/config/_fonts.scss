@@ -1,0 +1,73 @@
+// Import Google fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+// Define fonts for body and headers
+$body-font:  "Roboto", "sans-serif";
+$headers-font:  "Roboto", "sans-serif";
+
+
+
+// To use a font file (.woff) uncomment following lines
+// @font-face {
+//   font-family: "Font Name";
+//   src: font-url('FontFile.eot');
+//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
+//        font-url('FontFile.woff') format('woff'),
+//        font-url('FontFile.ttf') format('truetype')
+// }
+// $my-font: "Font Name";
+
+
+h1, h2, h4, h5, h6 {
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-family: "Roboto", "sans-serif" !important;
+
+}
+
+p {
+  letter-spacing: -0.5px;
+  margin-top: 25px !important;
+  color: #3C3744;
+}
+
+.flatpickr-current-month select {
+  display: inline-block !important;
+}
+
+h3 {
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #144263;
+}
+
+.filler {
+  margin-top: 110px;
+}
+
+span, a {
+  color: #3C3744;
+}
+
+.list-group-horizontal .list-group-item + .list-group-item {
+  color: #3C3744;
+}
+.list-group-horizontal .list-group-item:first-child {
+  color: #3C3744;
+
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #3C3744 !important;
+
+}
+
+.card-img, .card-img-top {
+  margin-bottom: 30px;
+}
+
+.dropdown-item {
+  font-family: "Roboto", "sans-serif" !important;
+  font-size: 16px !important;
+}
+

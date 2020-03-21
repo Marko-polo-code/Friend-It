@@ -1,0 +1,18 @@
+ <div class="container">
+  
+
+  <%= simple_form_for(@flat) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :address %>
+    <%= f.input :price %>
+    <%= f.input :swappable, as: :radio_buttons %>
+    <%= f.input :number_of_guests %>
+    <%= f.input :number_of_bedrooms %>
+    <%= f.input :number_of_bathrooms %>
+    <%= f.input :number_of_beds %>
+
+    <%= f.submit %>
+  <% end %>
+
+</div>

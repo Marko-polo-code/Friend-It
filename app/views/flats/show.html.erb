@@ -1,0 +1,119 @@
+
+<div class="filler"></div>
+
+
+<div class="container">
+  <div class="row">
+     <div class="col-8">
+      <% if @flat.photos.first %>
+        <div class="small-image-container">
+          <%= cl_image_tag @flat.photos.first.key,  height: 300, width: 400,  crop: :fill, class: "card-img-top hoverable materialboxed" %>
+          <div class="row align-items-center mx-auto">
+          <% @flat.photos[1..-1].each do |photo| %>
+            <%= cl_image_tag photo.key, class: "materialboxed image-thumb" %>
+            <% end %>
+          </div>
+      </div>
+        <% end %>
+          <h5><strong><%= @flat.title %></strong></h5>
+        <blockquote>
+          <p><%= @flat.description %></p>
+        </blockquote>
+          <p><strong><i class="fas fa-dollar-sign"></i><%= @flat.price %></strong></p>
+
+          <h5>
+            <i class="fas fa-exchange-alt"></i>
+            <% if @flat.swappable %>
+              This flat is swappable
+            <%= link_to "Swap", new_flat_swap_request_path(@flat), class: "btn btn-ghost"%>
+            <% else %>
+              This flat is not swappable
+            <% end %>
+          </h5>
+        <br>
+        <% if @flat.user.photo.attached? %>
+          <%= cl_image_tag @flat.user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, radius: :max, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+        <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+        <% end %>
+        <br>
+        <br>
+
+      <ul class="list-group list-group-horizontal">
+
+        <li class="list-group-item"><i class="fas fa-bed"></i>Bedrooms: <%= @flat.number_of_bedrooms %></li>
+        <li class="list-group-item"><i class="fas fa-restroom"></i>Bathrooms: <%= @flat.number_of_bathrooms %></li>
+        <li class="list-group-item"><i class="fas fa-person-booth"></i>Beds: <%= @flat.number_of_beds %></li>
+
+      </ul>
+
+      <br>
+      <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card-panel" id="perk-card">
+      <% @flat.perks.each do |perk| %>
+      <p><i class="far fa-check-square"></i><%= perk.name %></p>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <br>
+
+      </div>
+
+
+
+
+    <div class="col-4">
+      <div class="card-panel">
+      <div id='flat-booking-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
+          <% if current_user.id != @flat.user_id  %>
+            <%= simple_form_for([@flat, @booking]) do |f| %>
+                <%= f.input :start_date, as: :string, type: :text, label:false, wrapper_html: { class: 'far fa-calendar-alt'}, placeholder: "Start Date" %>
+                <%= f.input :end_date, as: :string, type: :text, label:false, wrapper_html: { class: 'fas fa-calendar-alt'}, placeholder: "End Date" %>
+                <%= f.input :number_of_guests, label:false, wrapper_html: { class: 'fas fa-user-friends'}, placeholder: "Number Of Guests" %>
+                <%= f.submit "Book", class: "btn btn-ghost" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        <%= link_to "Back", flats_path, class: "btn btn-ghost" %></p>
+
+        <% if @flat.user == current_user %>
+          <%= link_to "Edit this flat", edit_flat_path(@flat), class: "btn btn-ghost" %>
+        <% end %>
+
+        <% if @flat.user == current_user %>
+          <%= link_to "Add a Recommendation", new_flat_recommendation_path(@flat), class: "btn btn-ghost" %>
+        <% end %>
+
+        <% if @flat.user == current_user %>
+          <%= link_to "Add a Contact", new_flat_contact_path(@flat) , class: "btn btn-ghost"%>
+        <% end %>
+
+</div>
+
+    <div class="col-md-12">
+        <div id="map"
+        style="width: 100%; height: 100vh"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+
+    </div>
+  </div>
+
+<a class="top-link hide" href="" id="js-top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
+  <span class="screen-reader-text">Back to top</span>
+</a>
+

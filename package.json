@@ -1,0 +1,19 @@
+{
+  "name": "Friend-It",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "4.2.2",
+    "add": "^2.0.6",
+    "bootstrap": "^4.4.1",
+    "flatpickr": "^4.6.3",
+    "jquery": "^3.4.1",
+    "mapbox-gl": "^1.8.1",
+    "popper.js": "^1.16.1",
+    "select2": "^4.0.13",
+    "typed.js": "^2.0.11",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
+}

@@ -1,0 +1,28 @@
+#map {
+  position: sticky;
+  top: 0;
+}
+
+.card-panel {
+  border-radius: 16px;
+}
+
+.card {
+  border-radius: 16px;
+}
+
+
+.card .card-image img {
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+
+}
+
+.card .card-content .card-title {
+  color: #3C3744;
+}
+
+.avtr {
+  width: 270px;
+  height: 200px;
+}

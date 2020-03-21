@@ -1,0 +1,42 @@
+<div class="filler"></div>
+
+
+
+<div class="container-fluid px-5">
+  <div class="row">
+    <div class="col-md-8">
+       <% @flats.each do |flat| %>
+          <div class="flat-card row">
+            <div class="card-img-box col-sm-5">
+            <% if flat.photos.first %>
+              <%= cl_image_tag flat.photos.first.key,  height: 300, width: 400, crop: :fill, class: "card-img-top hoverable materialboxed" %>
+            <% end %>
+            </div>
+            <div class="col-sm-7 card-text-box">
+              <h1 class="box-flat-title"><%= link_to flat.title, flat_path(flat), class: "flat-title" %></h1>
+              <blockquote>
+                <p> <%= flat.description.truncate(150) %></p>
+                <p><i class="fas fa-map-marker-alt"></i><%= flat.address %></p>
+              <div class="d-flex px-0"><p id="index-price"><i class="fas fa-dollar-sign"></i><%= flat.price%></p></div>
+              </blockquote>
+            </div>
+          </div>
+       <% end %>
+    </div>
+    <div class="col-md-4">
+        <div id="map"
+        style="width: 100%; height: 100vh"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+<a class="top-link hide" href="" id="js-top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
+  <span class="screen-reader-text">Back to top</span>
+</a>
+

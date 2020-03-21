@@ -1,0 +1,80 @@
+<div class="filler"></div>
+
+
+
+<ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
+  <li class="nav-item flex-sm-fill"><i class="fas fa-map-marker-alt"></i>
+    <a id="home2-tab" data-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true"
+      class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active">Recommendations</a>
+  </li>
+  <li class="nav-item flex-sm-fill"><i class="far fa-address-book"></i>
+    <a id="profile2-tab" data-toggle="tab" href="#profile2" role="tab" aria-controls="profile2"
+      aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0">Contacts</a>
+  </li>
+</ul>
+
+
+<div id="myTab2Content" class="tab-content">
+
+ <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+  <div class="container-fluid">
+    <div class="row">
+        <% @flat.recommendations.each do |recommendation| %>
+      <div class="col s12 m6">
+        <div class="card hoverable">
+          <div class="card-image">
+          <p class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons map-toggler">add</i></p>
+            <div class="card-content">
+              <i class="fas fa-map-marked-alt"></i>
+              <br>
+              <br>
+              <h5><strong><%= recommendation.name %></strong></h5>
+              <br>
+              <h6><%= recommendation.description %></h6>
+              <br>
+              <h6>Address: <%= recommendation.address %></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+        <% end %>
+        <div class="col-md-4">
+          <div id="map"
+          class="d-none"
+            style="width: 100%;
+            height: 100vh;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="profile2" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
+  <div class="container-fluid">
+    <div class="row">
+      <% @flat.contacts.each do |contact| %>
+      <div class="col s12 m6">
+        <div class="card hoverable">
+          <div class="card-image">
+                <div class="card-content">
+                <p><strong><%= contact.name %></strong></p>
+                <br>
+                <p> <%= contact.phone_number %> </p>
+                <br>
+                <p> <%= contact.address %> </p>
+                <br>
+                <p><%= contact.description %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+</div>
+

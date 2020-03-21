@@ -1,0 +1,34 @@
+<div class="filler"></div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col md-12">
+      <div class="card-panel">
+        <%= simple_form_for(@flat) do |f| %>
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <%= f.input :address %>
+          <%= f.input :price %>
+          <%= f.input :swappable, as: :radio_buttons %>
+          <%= f.input :number_of_guests %>
+          <%= f.input :number_of_bedrooms %>
+          <%= f.input :number_of_bathrooms %>
+          <%= f.input :number_of_beds %>
+          <%= f.fields_for :flat_perk do |fp| %>
+            <%= fp.input :perk, collection: Perk.all, input_html: { multiple: true, class: "select2" } %>
+          <% end %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
+          <%= f.submit %>
+          <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+
+
+

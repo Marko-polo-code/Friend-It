@@ -1,0 +1,3 @@
+class FlatPerksController < ApplicationController
+  
+end

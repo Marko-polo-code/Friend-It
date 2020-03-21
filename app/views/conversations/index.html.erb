@@ -1,0 +1,55 @@
+
+<div class="filler"></div>
+
+<div class="container mailbox">
+ <h3 class="mb-title"><i class="far fa-envelope"></i>Mailbox</h3>
+ <div class="contacts">
+   <% @conversations.each do |conversation| %>
+    <% unless conversation.messages.empty? %>
+      <%= link_to conversation_messages_path(conversation), class: "remove-decoration" do %>
+      <div class="item">
+       <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
+        <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+        <% end %>
+
+         <div class="d-flex align-items-center mb-decoration">
+          <p><% if recipient.photo.attached? %>
+            <%= cl_image_tag recipient.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, radius: :max, class: "avatar" %>
+          <% else %>
+            <%= image_tag "logo.png", alt: "avatar", class: "avatar" %>
+          <% end %>
+          </p>
+         <div class="d-flex mb-decoration">
+            <p class="sender-name my-0"><%= recipient.first_name %> <%= recipient.last_name %></p>
+          <div class="mb-text">message: <%= conversation.messages.last.body.truncate(35).capitalize %>...</div>
+        </div>
+       <% end %>
+      </div>
+      <% end %>
+    <% end %>
+  <% end %>
+ </div>
+</div>
+</div>
+
+<div class="container mailbox my-4">
+ <h3 class="mb-title"><i class="far fa-paper-plane"></i>All Users</h3>
+  <div class="contacts">
+   <% @users.each do |user| %>
+      <% if user.id != current_user.id %>
+       <div class="item">
+        <% if user.photo.attached? %>
+          <%= cl_image_tag user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, radius: :max, class: "avatar" %>
+        <% else %>
+          <%= image_tag "logo.png", alt: "avatar", class: "avatar" %>
+        <% end %>
+          <p class="d-inline-block user-name"><%= user.first_name %> <%= user.last_name %></p> <%= link_to 'Message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-ghost"%>
+        </div>
+    <% end %>
+ <% end %>
+ </div>
+</div>
+
