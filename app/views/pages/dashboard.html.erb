@@ -1,139 +1,155 @@
 <div class="filler"></div>
 
-  <div class="caption center-align" >
-    <h3 class="d-inline" id="welcome" data-name="<%= current_user.first_name %>"></h3>
-  </div>
+<div class="container">
+
+<div class="caption center-align" >
+  <h3 class="d-inline" id="welcome" data-name="<%= current_user.first_name %>"></h3>
+</div>
 
 
-    <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
-        <li class="nav-item flex-sm-fill"><i class="fas fa-hotel"></i>
-          <a id="home2-tab" data-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true"
-            class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active">My Bookings</a>
-        </li>
-        <li class="nav-item flex-sm-fill"><i class="fas fa-exchange-alt"></i>
-          <a id="contact3-tab" data-toggle="tab" href="#contact3" role="tab" aria-controls="contact3"
-            aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0">Swap Request</a>
-        </li>
-     </ul>
+  <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
+    <li class="nav-item flex-sm-fill"><i class="fas fa-hotel"></i>
+      <a id="home2-tab" data-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true"
+        class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active">My Bookings</a>
+    </li>
+    <li class="nav-item flex-sm-fill"><i class="fas fa-exchange-alt"></i>
+      <a id="contact3-tab" data-toggle="tab" href="#contact3" role="tab" aria-controls="contact3"
+        aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0">Swap Request</a>
+    </li>
+  </ul>
 
-    <div id="myTab2Content" class="tab-content">
-      <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+  <div id="myTab2Content" class="tab-content">
+    <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
 
-        <div class="container-fluid ">
-          <div class="row">
-          <%@made_bookings.each do |booking|%>
-
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="card hoverable">
-           <div class="card-image waves-effect waves-block waves-light">
-           <% if booking.flat.photos.first %>
-             <%= cl_image_tag booking.flat.photos.first.key, height: 250, width: 250, crop: :fill,  class: "card-img-top" %>
-           <% end %>
-        </div>
-          <div class="card-content">
-            <div class="card-title activator"><br><i class="fas fa-home"></i><h5><strong><%= booking.flat.title %><i class="arrow"></strong><h5></i></div>
-              <br>
-            <% if booking.flat.user.photo.attached? %>
-              <%= cl_image_tag booking.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
-              <% else %>
-                <br>
-                <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
-            <% end %>
-          <p><%= booking.flat.user.first_name %> <%= booking.flat.user.last_name%></p>
-            <% unless booking.status == "rejected" %>
-        </div>
-            <div class="card-reveal">
-                <p><strong>From:</strong><br><br><%= booking.start_date %></p>
-                <p><strong>To:</strong><br><br><%= booking.end_date %></p>
-                <p><i class="fas fa-dollar-sign"></i><%= booking.flat.price %></p>
-                <br>
-            <div class="card-title grey-text text-darken-4"><i class="arrow2"></i></div>
-              <%= link_to "Discover", flat_info_path(booking.flat), class: "btn btn-ghost" %>
-              <br>
-              <br>
-              <%= link_to "Your Booking", flat_booking_path(booking.flat, booking), class: "btn btn-ghost" %>
-           </div>
-          <% end %>
-        </div>
-      </div>
-      <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div id="contact3" role="tabpanel" aria-labelledby="contact3-tab" class="tab-pane fade px-4 py-5">
-
-      <h4 class="text my-3">Pending</h4>
-      <div class="container-fluid">
+      <div class="container-fluid ">
         <div class="row">
-        <% @sent_requests.each do |request| %>
+        <%@made_bookings.each do |booking|%>
+
           <div class="col-lg-3 col-md-6 col-sm-12">
+
             <div class="card hoverable">
-              <% if request.status == "pending" %>
-                <div class="card-image waves-effect waves-block waves-light">
-                <% if request.requested_flat.photos.first %>
-                <%= cl_image_tag request.requested_flat.photos.first.key, height: 250, width: 250, crop: :fill, class: "card-img-top" %>
-                <% end %>
-                </div>
-                <div class="card-content">
-                  <div class="card-title activator grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow"></i></div>
-                    <br>
-                  <% if request.requested_flat.user.photo.attached? %>
-                  <%= cl_image_tag request.requested_flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
-                  <% else %>
-                    <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
-                <% end %>
-                </div>
-                <div class="card-reveal">
-                  <div class="card-title grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow2"></i></div>
-                  <p><%= request.requested_flat.description%></p>
-                  <span><strong><%= request.requested_flat.user.first_name%></strong><strong><br><%= request.requested_flat.user.last_name %></strong><span>
-                  <p><p><strong>Status:</strong><br><br><%= request.status %></p>
-                  <p><p><strong>From:</strong><br><br><%= request.start_date %></p>
-                  <p><p><strong>To:</strong><br><br><%= request.end_date %></p>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    <h4 class="text my-3">Past</h4>
-      <div class="container-fluid">
-        <div class="row">
-        <% @sent_requests.each do |request| %>
-          <div class="col s12 m6">
-            <div class="card hoverable">
-              <% if request.status != "pending" %>
-                <div class="card-image waves-effect waves-block waves-light">
-                 <% if request.requested_flat.photos.first %>
-                  <%= cl_image_tag request.requested_flat.photos.first.key,  height: 250, width: 250, crop: :fill, class: "card-img-top hoverable" %>
-                <% end %>
-                </div>
-                <div class="card-content">
-                  <div class="card-title activator grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="arrow"></i></a></div>
+
+              <div class="card-image waves-effect waves-block waves-light">
+                 <% if booking.flat.photos.first %>
+                   <%= cl_image_tag booking.flat.photos.first.key, height: 250, width: 250, crop: :fill,  class: "card-img-top" %>
+                 <% end %>
+              </div>
+
+              <div class="card-content">
+                <div class="card-title activator"><br><i class="fas fa-home"></i><h5><strong><%= booking.flat.title %><i class="arrow"></strong></h5></i></div>
+                <br>
+
+                <% if booking.flat.user.photo.attached? %>
+                  <%= cl_image_tag booking.flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                <% else %>
                   <br>
-                  <% if request.requested_flat.user.photo.attached? %>
-                  <%= cl_image_tag request.requested_flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
-                  <% else %>
                   <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
-                  <% end %>
-                </div>
-                <div class="card-reveal">
-                  <div class="card-title grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow2"></i></d>
-                  <p><%= request.requested_flat.description%></p>
-                  <span><strong><%= request.requested_flat.user.first_name%> <%= request.requested_flat.user.last_name %></strong><span>
-                  <p><p><strong>Status:<%= request.status %></p>
-                  <p><p><strong>Address:<%= request.requested_flat.address%></p>
-                </div>
+                <% end %>
+
+                <p><%= booking.flat.user.first_name %> <%= booking.flat.user.last_name%></p>
+                <% unless booking.status == "rejected" %>
+                  <div class="card-reveal">
+                    <p><strong>From:</strong><br><br><%= booking.start_date %></p>
+                    <p><strong>To:</strong><br><br><%= booking.end_date %></p>
+                    <p><i class="fas fa-dollar-sign"></i><%= booking.flat.price %></p>
+                    <br>
+                    <div class="card-title grey-text text-darken-4"><i class="arrow2"></i></div>
+                    <%= link_to "Discover", flat_info_path(booking.flat), class: "btn btn-ghost" %>
+                    <br>
+                    <br>
+                    <%= link_to "Your Booking", flat_booking_path(booking.flat, booking), class: "btn btn-ghost" %>
+                  </div>
+                <% end %>
+              </div>
             </div>
-              <% end %>
           </div>
         <% end %>
         </div>
       </div>
+
+
+      <div id="contact3" role="tabpanel" aria-labelledby="contact3-tab" class="tab-pane fade px-4 py-5">
+
+        <h4 class="text my-3">Pending</h4>
+        <div class="container-fluid">
+          <div class="row">
+          <% @sent_requests.each do |request| %>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <div class="card hoverable">
+                <% if request.status == "pending" %>
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <% if request.requested_flat.photos.first %>
+                    <%= cl_image_tag request.requested_flat.photos.first.key, height: 250, width: 250, crop: :fill, class: "card-img-top" %>
+                    <% end %>
+                  </div>
+                  <div class="card-content">
+                    <div class="card-title activator grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow"></i></div>
+                      <br>
+                    <% if request.requested_flat.user.photo.attached? %>
+                    <%= cl_image_tag request.requested_flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                    <% else %>
+                      <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+                    <% end %>
+                  </div>
+                  <div class="card-reveal">
+                    <div class="card-title grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow2"></i></div>
+                    <p><%= request.requested_flat.description%></p>
+                    <span><strong><%= request.requested_flat.user.first_name%></strong><strong><br><%= request.requested_flat.user.last_name %></strong></span>
+                    <p><p><strong>Status:</strong><br><br><%= request.status %></p>
+                    <p><p><strong>From:</strong><br><br><%= request.start_date %></p>
+                    <p><p><strong>To:</strong><br><br><%= request.end_date %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+        <h4 class="text my-3">Past</h4>
+        <div class="container-fluid">
+          <div class="row">
+          <% @sent_requests.each do |request| %>
+            <div class="col s12 m6">
+              <div class="card hoverable">
+
+                <% if request.status != "pending" %>
+
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <% if request.requested_flat.photos.first %>
+                      <%= cl_image_tag request.requested_flat.photos.first.key,  height: 250, width: 250, crop: :fill, class: "card-img-top hoverable" %>
+                    <% end %>
+                  </div>
+                  <div class="card-content">
+                    <div class="card-title activator grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="arrow"></i></a></div>
+                    <br>
+                    <% if request.requested_flat.user.photo.attached? %>
+                      <%= cl_image_tag request.requested_flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                    <% else %>
+                      <img src="https://www.agriuniverse.co.zw/media/com_easysocial/photos/232/582/man-avatar-icon-flat-vector-19152370_large.jpg" class="card-trip-user avatar-bordered" />
+                    <% end %>
+                  </div>
+
+                  <div class="card-reveal">
+                    <div class="card-title grey-text text-darken-4"><h5><strong><%=request.requested_flat.title %></strong></h5><i class="arrow2"></i></d></div>
+                    <p><%= request.requested_flat.description%></p>
+                    <span><strong><%= request.requested_flat.user.first_name%> <%= request.requested_flat.user.last_name %></strong></span>
+                    <p><strong>Status:<%= request.status %></strong></p>
+                    <p><strong>Address:<%= request.requested_flat.address%></strong></p>
+                  </div>
+
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-  </div>
+</div>
+
 
 
 
