@@ -20,7 +20,7 @@ const initSwapFlatpickr = () => {
     if (swapStartDateInput != "") {
       swapEndDateInput.disabled = false
     }
-    flatpickr(swapEndDateInput, {
+    flatpickr(swapEndDateInput, { 
       minDate: e.target.value,
       disable: unavailableDates,
       dateFormat: "Y-m-d"
